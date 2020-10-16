@@ -10,12 +10,11 @@ namespace Client
         {
             string ip = "127.0.0.1";
             int port = 80;
-            TcpClient client = null;
 
             try
             {
                 // connect to the server
-                client = new TcpClient(ip, port);
+                TcpClient client = new TcpClient(ip, port);
 
                 // send a message to the server
                 string msg = "test";
@@ -29,13 +28,9 @@ namespace Client
                 string s = Lib.DecodeBytes(bytes);
                 Console.WriteLine("Received: {0}", s);
             }
-            catch (SocketException e)
+            catch (SocketException)
             {
-                Console.WriteLine("SocketException: {0}", e.Message);
-            }
-            finally
-            {
-                client.Close();
+                Console.WriteLine("The server refused the connection");
             }
         }
     }
