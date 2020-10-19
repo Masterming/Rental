@@ -43,6 +43,35 @@ namespace WebsocketLib
             return true;
         }
 
+        private static List<byte[]> GetBytes(string msg, int size = 2048, bool masked = true)
+        {
+            List<byte[]> chunks;
+            int offset = size < 126 ? 2 : 4;
+            offset += masked ? 4 : 0;
+
+            // split into chunks
+            if (msg.Length > size - offset)
+            {
+                List<byte> buf = new List<byte>(Encoding.UTF8.GetBytes(msg));
+
+                chunks = buf.Select((x, i) => new { Value = x, Index = i })
+                .GroupBy(x => x.Index / (size - offset))
+                .Select(x => x.Select(y => y.Value).ToArray())
+                .ToList();
+            }
+            else
+                chunks = new List<byte[]>() { Encoding.UTF8.GetBytes(msg) };
+
+            for (int i = 0; i < chunks.Count; i++)
+            {
+                byte cmd = 0;
+                if (i == 0) cmd |= 1;
+                if (i == chunks.Count - 1) cmd |= 0x80;
+                chunks[i] = EncodeBytes(chunks[i], cmd, masked);
+            }
+            return chunks;
+        }
+
         public static string DecodeBytes(byte[] bytes)
         {
             bool masked = bytes[1] > 127;
@@ -66,38 +95,9 @@ namespace WebsocketLib
             }
             else
             {
-                System.Buffer.BlockCopy(bytes, offset, decoded, 0, msglen);
+                Buffer.BlockCopy(bytes, offset, decoded, 0, msglen);
             }
             return Encoding.UTF8.GetString(decoded);
-        }
-
-        private static List<byte[]> GetBytes(string msg, int size = 2048, bool masked = true)
-        {
-            List<byte[]> chunks;
-            int offset = size < 126 ? 2 : 4;
-            offset += masked ? 4 : 0;
-            // split into chunks
-            if (msg.Length > size - offset)
-            {
-                List<byte> buf = new List<byte>(Encoding.UTF8.GetBytes(msg));
-
-                chunks = buf.Select((x, i) => new { Value = x, Index = i })
-                .GroupBy(x => x.Index / (size - offset))
-                .Select(x => x.Select(y => y.Value).ToArray())
-                .ToList();
-            }
-            // too small for chunking
-            else
-                chunks = new List<byte[]>() { Encoding.UTF8.GetBytes(msg) };
-
-            for (int i = 0; i < chunks.Count; i++)
-            {
-                byte cmd = 0;
-                if (i == 0) cmd |= 1;
-                if (i == chunks.Count - 1) cmd |= 0x80;
-                chunks[i] = EncodeBytes(chunks[i], cmd, masked);
-            }
-            return chunks;
         }
 
         private static byte[] EncodeBytes(byte[] b, byte cmd, bool masked)
@@ -133,11 +133,11 @@ namespace WebsocketLib
                 for (int i = 0; i < msglen; ++i)
                     encoded[i] = (byte)(b[i] ^ masks[i % 4]);
 
-                System.Buffer.BlockCopy(masks, 0, bytes, offset - 4, 4);
-                System.Buffer.BlockCopy(encoded, 0, bytes, offset, encoded.Length);
+                Buffer.BlockCopy(masks, 0, bytes, offset - 4, 4);
+                Buffer.BlockCopy(encoded, 0, bytes, offset, encoded.Length);
             }
             else
-                System.Buffer.BlockCopy(b, 0, bytes, offset, b.Length);
+                Buffer.BlockCopy(b, 0, bytes, offset, b.Length);
 
             return bytes;
         }

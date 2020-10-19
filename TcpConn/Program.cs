@@ -20,9 +20,10 @@ namespace Serverside
             Server server = new Server(ip, port, responses);
             server.Run();
 
-            Console.WriteLine("Press any key to close.");
-            Console.ReadKey();
-            server.Stop();
+            // TODO: Find a way to close server
+            //Console.WriteLine("Press any key to close.");
+            //Console.ReadKey();
+            //server.Stop();
         }
     }
 }
