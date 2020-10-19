@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebsocketLib", "WebsocketLib\WebsocketLib.csproj", "{08856A5F-D915-4F06-AA5B-852F481CA825}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebsocketLib", "WebsocketLib\WebsocketLib.csproj", "{08856A5F-D915-4F06-AA5B-852F481CA825}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpClient", "TcpClient\TcpClient.csproj", "{F2AE1A14-303A-464C-834D-45131FCF4924}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clientside", "TcpClient\Clientside.csproj", "{F2AE1A14-303A-464C-834D-45131FCF4924}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCP_Conn", "TcpConn\TCP_Conn.csproj", "{D19BBBD9-367C-4683-B28F-4AE292E93E4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serverside", "TcpConn\Serverside.csproj", "{D19BBBD9-367C-4683-B28F-4AE292E93E4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,9 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{08856A5F-D915-4F06-AA5B-852F481CA825}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -58,5 +55,11 @@ Global
 		{D19BBBD9-367C-4683-B28F-4AE292E93E4D}.Release|x64.Build.0 = Release|Any CPU
 		{D19BBBD9-367C-4683-B28F-4AE292E93E4D}.Release|x86.ActiveCfg = Release|Any CPU
 		{D19BBBD9-367C-4683-B28F-4AE292E93E4D}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {75C2E826-7E85-4C15-8E3D-EF52B35F63A9}
 	EndGlobalSection
 EndGlobal

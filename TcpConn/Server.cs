@@ -1,29 +1,40 @@
-using System;
+﻿using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.RegularExpressions;
 using WebsocketLib;
 
-namespace Server
+namespace Serverside
 {
-    class TcpServer
+    class Server
     {
-        public static void Main()
-        {
-            string ip = "127.0.0.1";
-            int port = 80;
-            TcpListener server = null;
+        private bool exit;
+        private readonly TcpListener server;
+        private Responses responses;
 
+        public Server(string ip, int port, Responses _responses)
+        {
+            Ip = ip;
+            Port = port;
+            server = new TcpListener(IPAddress.Parse(ip), port);
+            responses = _responses;
+        }
+
+        public string Ip { get; }
+
+        public int Port { get; }
+
+        public void Run()
+        {
             try
             {
                 // start the server
-                server = new TcpListener(IPAddress.Parse(ip), port);
                 server.Start();
-                Console.WriteLine("Server has started on {0}:{1}", ip, port);
+                Console.WriteLine("Server has started on {0}:{1}", Ip, Port);
 
                 // Wait for a connection request from a client
-                while (true)
+                while (!exit)
                 {
                     Console.WriteLine("Waiting for a connection...\n");
                     TcpClient client = server.AcceptTcpClient();
@@ -50,23 +61,19 @@ namespace Server
                             var stream = client.GetStream();
                             stream.Write(res, 0, res.Length);
                         }
-                        // Transform message into readable Encoding
                         else
                         {
+                            // Transform message into readable Encoding
                             s = Lib.DecodeBytes(bytes);
-                            Console.WriteLine("Received: {0}", s);
+                            Console.WriteLine($"Received: {s}");
 
-                            string res = "";
-                            res = s switch
-                            {
-                                "hallo server" => "hallo user",
-                                "test" => "test",
-                                _ => "0",
-                            };
+                            string res = responses.ExecuteFunc(s);
+                            if (res == null)
+                                res = "Error: Failed to read request";
 
                             // Send back a response.
                             Lib.Write(client, res, false);
-                            Console.WriteLine("Sent: {0}", res);
+                            Console.WriteLine($"Sent: {res}");
 
                             // Disconnect client after sending the response
                             client.Close();
@@ -84,6 +91,11 @@ namespace Server
             {
                 server.Stop();
             }
+        }
+
+        public void Stop()
+        {
+            exit = true;
         }
     }
 }
