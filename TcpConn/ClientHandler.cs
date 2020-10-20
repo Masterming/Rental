@@ -26,7 +26,7 @@ namespace Serverside
 
             s = Lib.DecodeBytes(bytes);
             Console.WriteLine($"({ip}) Recieved: {s}");
-            RequestHandler.Handle(client, s, ip);
+            RequestHandler.Handle(client, s);
         }
         private static byte[] CreateHandshake(string s)
         {
