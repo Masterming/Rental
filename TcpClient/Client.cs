@@ -36,7 +36,7 @@ namespace Clientside
             catch (SocketException)
             {
                 Console.WriteLine("The server refused the connection");
-                return null;
+                return "";
             }
         }
     }

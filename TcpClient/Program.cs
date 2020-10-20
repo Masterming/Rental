@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Net.Sockets;
-using WebsocketLib;
 
 namespace Clientside
 {
@@ -14,15 +12,12 @@ namespace Clientside
 
             Console.Write("Message: ");
             string msg = Console.ReadLine(); ;
-            Console.WriteLine($"Sent: {msg}");
+            //Console.WriteLine($"Sent: {msg}");
 
             string res = client.Send(msg);
-            if(res == null)
-                Console.WriteLine("The server refused the connection");
-            else
-                Console.WriteLine($"Received: {res}");
+            Console.WriteLine($"Received: {res}");
 
-            Console.WriteLine("Press any key to close.");
+            Console.WriteLine("Press any key to close ...");
             Console.ReadKey();
         }
     }

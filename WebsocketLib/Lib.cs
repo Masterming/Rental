@@ -11,26 +11,21 @@ namespace WebsocketLib
     {
         public static byte[] Read(TcpClient client)
         {
-            // Buffer for reading data
-            byte[] bytes;
-
             NetworkStream stream = client.GetStream();
+            using MemoryStream TmpStream = new MemoryStream();
             while (!stream.DataAvailable) ;
-            using (var TempStream = new MemoryStream())
+
+            // read steam to buffer in chunks of 2KB
+            byte[] buffer = new byte[2048];
+            while (client.Available > 0)
             {
-                // read in chunks of 2KB
-                byte[] buffer = new byte[2048];
-                while (client.Available > 0)
-                {
-                    int bytesRead = stream.Read(buffer, 0, buffer.Length);
-                    TempStream.Write(buffer, 0, bytesRead);
-                }
-                bytes = TempStream.ToArray();
+                int bytesRead = stream.Read(buffer, 0, buffer.Length);
+                TmpStream.Write(buffer, 0, bytesRead);
             }
-            return bytes;
+            return TmpStream.ToArray();
         }
 
-        public static bool Write(TcpClient client, string msg, bool masked)
+        public static void Write(TcpClient client, string msg, bool masked)
         {
             NetworkStream stream = client.GetStream();
 
@@ -40,6 +35,12 @@ namespace WebsocketLib
             {
                 stream.Write(parts[i], 0, parts[i].Length);
             }
+        }
+
+        public static bool Write(TcpClient client, byte[] bytes)
+        {
+            NetworkStream stream = client.GetStream();
+            stream.Write(bytes, 0, bytes.Length);
             return true;
         }
 
