@@ -12,12 +12,12 @@ namespace Clientside
 
             Console.Write("Message: ");
             string msg = Console.ReadLine(); ;
-            Console.WriteLine($"Sent: {msg}");
+            //Console.WriteLine($"Sent: {msg}");
 
             string res = client.Send(msg);
             Console.WriteLine($"Received: {res}");
 
-            Console.WriteLine("Press any key to close.");
+            Console.WriteLine("Press any key to close ...");
             Console.ReadKey();
         }
     }

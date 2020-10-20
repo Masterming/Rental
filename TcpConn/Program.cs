@@ -1,8 +1,9 @@
 using System;
+using System.Threading.Tasks;
 
 namespace Serverside
 {
-    class Program
+    static class Program
     {
         public static void Main()
         {
@@ -11,7 +12,7 @@ namespace Serverside
 
             Responses responses = RequestHandler.Responses;
             responses.Add("hello server", () => "hello world");
-            responses.Add("test", () => "test");
+            responses.Add("test delay", () => { Task.Delay(TimeSpan.FromSeconds(60)).Wait(); return "test"; });
             RequestHandler.Responses = responses;
 
             Server server = new Server(ip, port);

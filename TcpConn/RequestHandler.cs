@@ -13,19 +13,19 @@ namespace Serverside
 
         internal static Responses Responses { get; set; }
 
-        public static void Handle(TcpClient client, string s)
+        public static void Handle(TcpClient client, string s, string ip)
         {
             string res = Responses.ExecuteFunc(s);
             if (res == null)
-                res = "Sorry, I didn't quite get that...";
+                res = "Failed to recognize Reqeuest";
 
             // Send back a response.
             Lib.Write(client, res, false);
-            Console.WriteLine($"Sent: {res}");
+            Console.WriteLine($"Sent ({ip}): {res}");
 
             // Disconnect client after sending the response
             client.Close();
-            Console.WriteLine("Client disconnected.\n");
+            Console.WriteLine($"Disconnected: {ip}");
         }
     }
 }
