@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Serverside
 {
     class Responses
     {
-        private Dictionary<string, Func<string>> actions;
+        private readonly Dictionary<string, Func<string>> actions;
 
         public Responses()
         {
