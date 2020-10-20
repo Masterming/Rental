@@ -17,15 +17,15 @@ namespace Serverside
         {
             string res = Responses.ExecuteFunc(s);
             if (res == null)
-                res = "Failed to recognize Reqeuest";
+                res = "Failed to recognize request";
 
             // Send back a response.
             Lib.Write(client, res, false);
-            Console.WriteLine($"Sent ({ip}): {res}");
+            Console.WriteLine($"({ip}) Sent: {res}");
 
             // Disconnect client after sending the response
             client.Close();
-            Console.WriteLine($"Disconnected: {ip}");
+            Console.WriteLine($"({ip}) Client disconnected");
         }
     }
 }

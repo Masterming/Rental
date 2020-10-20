@@ -23,23 +23,19 @@ namespace Serverside
 
         public void Run()
         {
-            //try
-            //{
-            // start the server
-            server.Start();
-            Console.WriteLine("Server has started on {0}:{1}", Ip, Port);
-            var task = Task.Run(() => AcceptClientsAsync());
-            if (task.IsFaulted)
-                task.Wait();
-            //}
-            //catch (SocketException e)
-            //{
-            //    Console.WriteLine("SocketException: {0}", e.Message);
-            //}
-            //finally
-            //{
-            //    server.Stop();
-            //}
+            try
+            {
+                server.Start();
+                Console.WriteLine("Server has started on {0}:{1}", Ip, Port);
+                var task = Task.Run(() => AcceptClientsAsync());
+                if (task.IsFaulted)
+                    task.Wait();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: {0}", e.Message);
+                server.Stop();
+            }
         }
 
         public void Stop()
@@ -54,6 +50,7 @@ namespace Serverside
                 TcpClient client = await server.AcceptTcpClientAsync();
                 Task task = Task.Run(() => ClientHandler.Handle(client));
             }
+            server.Stop();
         }
     }
 }

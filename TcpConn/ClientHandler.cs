@@ -11,7 +11,7 @@ namespace Serverside
         public static void Handle(TcpClient client)
         {
             string ip = client.Client.RemoteEndPoint.ToString();
-            Console.WriteLine($"Connected: {ip}");
+            Console.WriteLine($"({ip}) Client connected");
 
             byte[] bytes = Lib.Read(client);
             string s = Encoding.UTF8.GetString(bytes);
@@ -25,7 +25,7 @@ namespace Serverside
             }
 
             s = Lib.DecodeBytes(bytes);
-            Console.WriteLine($"Recieved ({ip}): {s}");
+            Console.WriteLine($"({ip}) Recieved: {s}");
             RequestHandler.Handle(client, s, ip);
         }
         private static byte[] CreateHandshake(string s)

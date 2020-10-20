@@ -12,7 +12,7 @@ namespace Serverside
 
             Responses responses = RequestHandler.Responses;
             responses.Add("hello server", () => "hello world");
-            responses.Add("test delay", () => { Task.Delay(TimeSpan.FromSeconds(60)).Wait(); return "test"; });
+            responses.Add("test delay", () => { Task.Delay(TimeSpan.FromSeconds(20)).Wait(); return "test"; });
             RequestHandler.Responses = responses;
 
             Server server = new Server(ip, port);
