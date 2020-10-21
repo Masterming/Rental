@@ -1,12 +1,23 @@
-using System;
+﻿using System;
+using System.Globalization;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Serverside
 {
     static class Program
     {
+        private static Mutex mainMutex = new Mutex(true, "main");
         public static void Main()
         {
+            if (!mainMutex.WaitOne(3000, false))
+            {
+                Console.WriteLine("Another Instance of this program ia already running");
+                Console.WriteLine("Press any key to close ...\n");
+                Console.ReadKey();
+                return;
+            }
+
             string ip = "127.0.0.1";
             int port = 80;
 
