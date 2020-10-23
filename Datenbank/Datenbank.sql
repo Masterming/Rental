@@ -1,11 +1,10 @@
-mysql -u root
+DROP TABLE IF EXISTS Autos;
+DROP TABLE IF EXISTS Vermietung;
+DROP TABLE IF EXISTS Kunde;
 
-create database Autovermietung;
-use Vermietung;
-
-create table Autos (AutoID int AUTO_INCREMENT NOT NULL PRIMARY KEY, Modell char(50), Marke char(50), Kraftstoffart char(50), Leistung int, Typ char(50), Sitzplaetze int, Tueren int);
-create table Vermietung (VermietungID int AUTO_INCREMENT NOT NULL PRIMARY KEY, Anfang date, Ende date, AutoID int, KundenID int);
-create table Kunde (KundenID int AUTO_INCREMENT NOT NULL PRIMARY KEY, Username char(50), Password char(50), Inhaltzusammenhang char(50));
+CREATE TABLE Autos (AutoID int NOT NULL PRIMARY KEY, Modell char(50), Marke char(50), Kraftstoffart char(50), Leistung int, Typ char(50), Sitzplaetze int, Tueren int);
+CREATE TABLE Vermietung (VermietungID int NOT NULL PRIMARY KEY, Anfang date, Ende date, AutoID int, KundenID int);
+CREATE TABLE Kunde (KundenID int NOT NULL PRIMARY KEY, Username char(50), Password char(50), Inhaltzusammenhang char(50));
 
 INSERT INTO autos (Modell, Marke, Kraftstoffart, Leistung, Typ, Sitzplaetze, Tueren) VALUES ('Vierer', 'Bmw', 'Diesel', '188', 'Coupe', '4', '3');
 INSERT INTO autos (Modell, Marke, Kraftstoffart, Leistung, Typ, Sitzplaetze, Tueren) VALUES ('Dreier', 'Bmw', 'Diesel', '256', 'Kombi', '5', '5');
