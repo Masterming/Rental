@@ -113,5 +113,7 @@ namespace GUI
             Bestellung bestellung = new Bestellung(sDatum, eDatum, taeglicherPreis);
             bestellung.Show();
         }
+
+
     }
 }
