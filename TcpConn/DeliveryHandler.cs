@@ -2,6 +2,7 @@
 using System;
 using System.Net.Sockets;
 using WebsocketLib;
+using SerializeLib;
 
 namespace Serverside
 {
