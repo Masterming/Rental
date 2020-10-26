@@ -13,6 +13,12 @@ namespace Clientside
         {
             InitializeComponent();
 
+            // TODO: get data from server
+            // Client client = (Client) Application.Current.Properties["client"];
+            // DateTime start = (DateTime)Application.Current.Properties["start"];
+            // DateTime end = (DateTime)Application.Current.Properties["end"];
+            // client.GetData(start.ToShortDateString(), end.ToShortDateString();
+
             Marke.Items.Add("BMW");
             Marke.Items.Add("Mercedes");
             Marke.Items.Add("Ferarri");
