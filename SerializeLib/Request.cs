@@ -1,17 +1,14 @@
-﻿using Serverside;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
-namespace Serverside
+namespace SerializeLib
 {
-    class Request
+    public class Request
     {
         public readonly DateTime start;
         public readonly DateTime end;
         public readonly int carID;
 
-        Request(DateTime _start, DateTime _end, int id = -1)
+        public Request(DateTime _start, DateTime _end, int id = -1)
         {
             start = _start;
             end = _end;

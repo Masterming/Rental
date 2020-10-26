@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Serverside
+﻿namespace SerializeLib
 {
-    class Car
+    public class Car
     {
         public readonly int id;
         public readonly string model;
@@ -16,7 +12,7 @@ namespace Serverside
         public readonly int doors;
         public readonly int pricePerDay;
 
-        Car(int _id, string _model, string _brand, string _fueltype, int _power, string _type, int _seats, int _doors, int _pricePerDay)
+        public Car(int _id, string _model, string _brand, string _fueltype, int _power, string _type, int _seats, int _doors, int _pricePerDay)
         {
             id          = _id;
             model       = _model;

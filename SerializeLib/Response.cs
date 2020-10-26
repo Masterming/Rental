@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace Serverside
+namespace SerializeLib
 {
-    class Response
+    public class Response
     {
         public readonly List<Car> cars;
         public readonly string errorCode;
 
-        Response(string error, List<Car> items = null)
+        public Response(string error, List<Car> items = null)
         {
             errorCode = error;
             cars = items;
