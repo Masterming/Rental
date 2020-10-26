@@ -1,7 +1,10 @@
 ﻿using System.Windows;
 
-namespace GUI
+namespace Clientside
 {
+    /// <summary>
+    /// Interaction logic for Autoauswahl.xaml
+    /// </summary>
     public partial class Autoauswahl : Window
     {
         private readonly double taeglicherPreis = 300;
@@ -28,6 +31,11 @@ namespace GUI
             Kraftstoff.Items.Add("Elektro");
             Kraftstoff.Items.Add("Diesel");
             Kraftstoff.Items.Add("Benzin");
+        }
+
+        private void Model_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void Weiter_Click(object sender, RoutedEventArgs e)

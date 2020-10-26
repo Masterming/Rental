@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace GUI
+namespace Clientside
 {
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml

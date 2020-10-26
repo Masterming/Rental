@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Windows;
 
-namespace GUI
+namespace Clientside
 {
     /// <summary>
-    /// Interaktionslogik für Bestellung.xaml
+    /// Interaction logic for Bestellung.xaml
     /// </summary>
     public partial class Bestellung : Window
     {

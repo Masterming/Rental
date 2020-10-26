@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Serverside
+﻿namespace Serverside
 {
     class SQL_Socket
     {
