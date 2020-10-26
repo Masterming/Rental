@@ -14,14 +14,14 @@
 
         public Car(int _id, string _model, string _brand, string _fueltype, int _power, string _type, int _seats, int _doors, int _pricePerDay)
         {
-            id          = _id;
-            model       = _model;
-            brand       = _brand;
-            fueltype    = _fueltype;
-            power       = _power;
-            type        = _type;
-            seats       = _seats;
-            doors       = _doors;
+            id = _id;
+            model = _model;
+            brand = _brand;
+            fueltype = _fueltype;
+            power = _power;
+            type = _type;
+            seats = _seats;
+            doors = _doors;
             pricePerDay = _pricePerDay;
         }
     }
