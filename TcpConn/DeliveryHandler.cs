@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Net.Sockets;
 using WebsocketLib;
+using SerializeLib;
 
 namespace Serverside
 {
     internal static class DeliveryHandler
     {
         //TODO implement handling
-        internal static void send(TcpClient client, Response res)
+        internal static void Send(TcpClient client, Response res)
         {
             string ip = client.Client.RemoteEndPoint.ToString();
 
