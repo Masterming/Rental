@@ -6,12 +6,15 @@ namespace Serverside
 {
     internal static class DeliveryHandler
     {
-        internal static void Handle(TcpClient client, string res)
+        //TODO implement handling
+        internal static void send(TcpClient client, Response res)
         {
             string ip = client.Client.RemoteEndPoint.ToString();
 
+            string json = ""; //TODO serialization
+
             // Send back a response.
-            Lib.Write(client, res, false);
+            Lib.Write(client, json, false);
             Console.WriteLine($"({ip}) Sent: {res}");
 
             // Disconnect client after sending the response
