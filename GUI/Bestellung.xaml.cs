@@ -19,9 +19,24 @@ namespace GUI
     /// </summary>
     public partial class Bestellung : Window
     {
-        public Bestellung()
+        private readonly DateTime sDatum;
+        private readonly DateTime eDatum;
+        private readonly double taeglicherPreis;
+        private readonly double gesamt;
+
+        public Bestellung(DateTime sDatum, DateTime eDatum, double taeglicherPreis)
         {
             InitializeComponent();
+            this.sDatum = sDatum;
+            this.eDatum = eDatum;
+            this.taeglicherPreis = taeglicherPreis;
+            this.gesamt = ((eDatum - sDatum).TotalDays + 1) * taeglicherPreis;
+            //MessageBox.Show("Gesamtpreis: " + gesamt);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
