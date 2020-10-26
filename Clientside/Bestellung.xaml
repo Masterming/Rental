@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+        Closing="Window_Closing"  
         Title="Bestellung" Height="572.667" Width="866.667">
     <Grid>
         <Rectangle Fill="#FFF4F4F5" Height="416" Stroke="Black" VerticalAlignment="Top" Margin="40,67,32,0"/>
