@@ -1,18 +1,22 @@
 ﻿using System.Net.Sockets;
 using SerializeLib;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Threading;
 
 namespace Serverside
 {
     internal static class RequestHandler
     {
-        static RequestHandler()
+        
+        public static void Handle(TcpClient client, string json)
         {
+            ThreadPool.QueueUserWorkItem(run(client, json));
         }
 
-        public static void Handle(TcpClient client, string s)
+        static internal void run(TcpClient client, string json)
         {
-            //TODO deserialization
-            Request r = null;
+            Request r = JsonSerializer.Deserialize<Request>(json);
             PromiseMapElement elem = new PromiseMapElement(client, r);
             elem.ToggleState();
             int id = Promisemap.Add(elem);

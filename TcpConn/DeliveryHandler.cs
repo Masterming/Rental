@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Net.Sockets;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using WebsocketLib;
+using SerializeLib;
 
 namespace Serverside
 {
@@ -11,7 +14,7 @@ namespace Serverside
         {
             string ip = client.Client.RemoteEndPoint.ToString();
 
-            string json = ""; //TODO serialization
+            string json = JsonSerializer.Serialize(res);
 
             // Send back a response.
             Lib.Write(client, json, false);
