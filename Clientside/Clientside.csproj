@@ -7,7 +7,61 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Pictures\Audi A3 Limousine.jpg" />
+    <None Remove="Pictures\Audi RS3.jpg" />
+    <None Remove="Pictures\BMW M4 Competition.jpg" />
+    <None Remove="Pictures\BMW M8 Gran Coupé.jpg" />
+    <None Remove="Pictures\BMW X6.jpg" />
+    <None Remove="Pictures\Ferrari LaFerrari.jpg" />
+    <None Remove="Pictures\Golf GTI TCR.jpg" />
+    <None Remove="Pictures\Jeep-Cherokeejpg.jpg" />
+    <None Remove="Pictures\Mercedes Benz G-Class.jpg" />
+    <None Remove="Pictures\Porsche Spyder 918.jpg" />
+    <None Remove="Pictures\VW Passat B8.png" />
+    <None Remove="Pictures\VW Up!.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\WebsocketLib\WebsocketLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Pictures\Audi A3 Limousine.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\Audi RS3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\BMW M4 Competition.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\BMW M8 Gran Coupé.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\BMW X6.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\Ferrari LaFerrari.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\Golf GTI TCR.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\Jeep-Cherokeejpg.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\Mercedes Benz G-Class.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\Porsche Spyder 918.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\VW Passat B8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Pictures\VW Up!.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

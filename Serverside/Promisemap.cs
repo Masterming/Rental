@@ -5,8 +5,8 @@ namespace Serverside
 {
     static class Promisemap
     {
-        private static Mutex mapMutex = new Mutex();
-        private static Dictionary<int, PromiseMapElement> map = new Dictionary<int, PromiseMapElement>();
+        private static readonly Mutex mapMutex = new Mutex();
+        private static readonly Dictionary<int, PromiseMapElement> map = new Dictionary<int, PromiseMapElement>();
         private static int nextID = 0;
 
         //returns id of added element
@@ -27,7 +27,7 @@ namespace Serverside
             return ret;
         }
 
-        public static int count()
+        public static int Count()
         {
             mapMutex.WaitOne(-1);
             int ret = map.Count;
