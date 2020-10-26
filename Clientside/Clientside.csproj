@@ -22,10 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WebsocketLib\WebsocketLib.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Pictures\Audi A3 Limousine.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -71,6 +67,11 @@
     <Page Update="Bestellung.xaml">
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+	<ProjectReference Include="..\SerializeLib\SerializeLib.csproj" />
+	<ProjectReference Include="..\WebsocketLib\WebsocketLib.csproj" />
   </ItemGroup>
 
 </Project>

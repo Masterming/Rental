@@ -6,7 +6,6 @@ namespace Clientside
 {
     class Client
     {
-
         public Client(string ip, int port)
         {
             Ip = ip;

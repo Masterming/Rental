@@ -8,6 +8,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SerializeLib", "SerializeLib\SerializeLib.csproj", "{5E842405-AC5D-4AD8-B487-2FE901681552}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clientside", "Clientside\Clientside.csproj", "{5D031B58-23BC-445A-9622-CA0B84949BEE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5E842405-AC5D-4AD8-B487-2FE901681552} = {5E842405-AC5D-4AD8-B487-2FE901681552}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serverside", "Serverside\Serverside.csproj", "{6166F155-A318-4AA3-B931-5DE2DBF54157}"
 EndProject
