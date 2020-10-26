@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SerializeLib;
+using System;
 using System.Net.Sockets;
-using System.Reflection.PortableExecutable;
-using System.Text;
 using System.Threading;
 
 namespace Serverside
@@ -16,7 +14,7 @@ namespace Serverside
     }
     class PromiseMapElement
     {
-        private Mutex elementMutex = new Mutex();
+        private readonly Mutex elementMutex = new Mutex();
         private State state = State.uninitialized;
         public readonly TcpClient client;
         public Request request;
@@ -46,7 +44,7 @@ namespace Serverside
                 throw new Exception("stateOverflow in PromisMapElement");
         }
 
-        public State getState()
+        public State GetState()
         {
             return state;
         }
