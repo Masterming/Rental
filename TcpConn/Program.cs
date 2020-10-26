@@ -21,10 +21,10 @@ namespace Serverside
             string ip = "127.0.0.1";
             int port = 80;
 
-            Responses responses = RequestHandler.Responses;
+            /*Responses responses = RequestHandler.Responses;
             responses.Add("hello server", () => "hello world");
             responses.Add("test delay", () => { Task.Delay(TimeSpan.FromSeconds(20)).Wait(); return "test"; });
-            RequestHandler.Responses = responses;
+            RequestHandler.Responses = responses;*/
 
             Server server = new Server(ip, port);
             server.Run();

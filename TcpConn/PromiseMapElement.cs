@@ -19,9 +19,10 @@ namespace Serverside
         private Mutex elementMutex = new Mutex();
         private State state = State.uninitialized;
         public readonly TcpClient client;
-        public string request;
+        public Request request;
+        public Response response;
 
-        public PromiseMapElement(TcpClient c, string r)
+        public PromiseMapElement(TcpClient c, Request r)
         {
             client = c;
             request = r;
@@ -42,7 +43,7 @@ namespace Serverside
             if ((int)state < 3)
                 state++;
             else
-                //throw Exception("stateOverflow in PromisMapElement");
+                throw new Exception("stateOverflow in PromisMapElement");
         }
 
         public State getState()

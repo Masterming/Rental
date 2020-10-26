@@ -11,11 +11,14 @@ namespace Serverside
         private static Dictionary<int, PromiseMapElement> map = new Dictionary<int, PromiseMapElement>();
         private static int nextID = 0;
 
-        public static void Add(PromiseMapElement elem)
+        //returns id of added element
+        public static int Add(PromiseMapElement elem)
         {
             mapMutex.WaitOne(-1);
-            map.Add(nextID++, elem);
+            map.Add(nextID, elem);
             mapMutex.ReleaseMutex();
+            nextID += 1;
+            return nextID - 1;
         }
 
         public static bool Remove(int id)
@@ -38,7 +41,7 @@ namespace Serverside
         {
             mapMutex.WaitOne(-1);
             PromiseMapElement elem = map[id];
-            elem.Acquire();
+            elem.Acquire(); //implement spinlock
             mapMutex.ReleaseMutex();
             return elem;
         }
