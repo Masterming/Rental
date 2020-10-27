@@ -1,11 +1,13 @@
-﻿using System;
+using System;
+using System.Globalization;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Serverside
 {
     static class Program
     {
-        private static readonly Mutex mainMutex = new Mutex(true, "main");
+        private static Mutex mainMutex = new Mutex(true, "main");
         public static void Main()
         {
             if (!mainMutex.WaitOne(3000, false))
