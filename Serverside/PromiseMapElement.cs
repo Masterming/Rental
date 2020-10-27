@@ -20,8 +20,8 @@ namespace Serverside
         private Mutex elementMutex = new Mutex();
         private State state = State.uninitialized;
         public readonly TcpClient client;
-        public Request request;
-        public Response response;
+        public readonly Request request;
+        public readonly Response response;
 
         public PromiseMapElement(TcpClient c, Request r)
         {

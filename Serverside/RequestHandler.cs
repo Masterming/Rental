@@ -11,7 +11,8 @@ namespace Serverside
         
         public static void Handle(TcpClient client, string json)
         {
-            ThreadPool.QueueUserWorkItem(run(client, json));
+            Thread workerThread = new Thread(() => run(client, json));
+            workerThread.Start();
         }
 
         static internal void run(TcpClient client, string json)
