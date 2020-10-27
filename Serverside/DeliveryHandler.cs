@@ -4,12 +4,26 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using WebsocketLib;
 using SerializeLib;
+using System.Threading;
 
 namespace Serverside
 {
     internal static class DeliveryHandler
     {
-        //TODO implement handling
+        public static void Handle(int id)
+        {
+            Thread workerThread = new Thread(() => run(id));
+            workerThread.Start();
+        }
+
+        internal static void run(int id)
+        {
+            PromiseMapElement elem = Promisemap.AcquireElement(id);
+            send(elem.client, elem.getResponse());
+            Promisemap.Remove(id);
+        }
+
+
         internal static void send(TcpClient client, Response res)
         {
             string ip = client.Client.RemoteEndPoint.ToString();

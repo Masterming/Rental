@@ -21,7 +21,7 @@ namespace Serverside
         private State state = State.uninitialized;
         public readonly TcpClient client;
         public readonly Request request;
-        public readonly Response response;
+        private Response response;
 
         public PromiseMapElement(TcpClient c, Request r)
         {
@@ -29,9 +29,9 @@ namespace Serverside
             request = r;
             state = State.initialized;
         }
-        public void Acquire()
+        public bool Acquire(int duration = -1)
         {
-            elementMutex.WaitOne(-1);
+            return elementMutex.WaitOne(duration);
         }
 
         public void Release()
@@ -47,6 +47,18 @@ namespace Serverside
                 throw new Exception("stateOverflow in PromisMapElement");
         }
 
+        public Response getResponse()
+        {
+            return response;
+        }
+
+        public void setResponse(Response _res)
+        {
+            if(response == null)
+            {
+                response = _res;
+            }
+        }
 
         public State GetState()
         {
