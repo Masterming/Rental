@@ -4,10 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Closing="Window_Closing"  
-        Title="Bestellung" Height="572.667" Width="866.667">
+        Closing="Window_Closing"
+        Title="Bestellung" Height="570" Width="870">
     <Grid>
-        <Rectangle Fill="#FFF4F4F5" Height="416" Stroke="Black" VerticalAlignment="Top" Margin="40,67,32,0"/>
+        <Rectangle Fill="#F4F4F4" Height="416" Stroke="Black" VerticalAlignment="Top" Margin="40,67,32,0"/>
         <Label Content="Bestellübersicht" Margin="40,31,0,0" VerticalAlignment="Top" Width="145" HorizontalAlignment="Left" FontSize="18" FontWeight="Bold" FontStyle="Italic" Height="36"/>
         <StackPanel HorizontalAlignment="Left" Height="369" Margin="58,72,0,0" VerticalAlignment="Top" Width="614">
             <Label Content="Fahrzeugdetails:" FontSize="16" FontWeight="Bold"/>
