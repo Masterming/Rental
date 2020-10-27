@@ -1,0 +1,20 @@
+﻿<Window x:Class="Clientside.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="0,0,-6.667,-19.333">
+        <DatePicker HorizontalAlignment="Left" Margin="57,110,0,0" VerticalAlignment="Top" Height="182" Width="187" x:Name="Abholdatum" SelectedDateChanged="SelectedDateChanged"/>
+        <DatePicker HorizontalAlignment="Left" Margin="361,110,0,0" VerticalAlignment="Top" Height="182" Width="187" x:Name="Rückgabedatum" SelectedDateChanged="SelectedDateChanged"/>
+        <TextBlock HorizontalAlignment="Left" Height="36" Margin="58,69,0,0" TextWrapping="Wrap" Text="Abholdatum" VerticalAlignment="Top" Width="186" FontSize="20" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline"/>
+        <TextBlock HorizontalAlignment="Left" Height="41" Margin="361,69,0,0" TextWrapping="Wrap" Text="Rückgabedatum" VerticalAlignment="Top" Width="187" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline" FontSize="20"/>
+        <Button Content="Autoauswahl" HorizontalAlignment="Left" Margin="593,330,0,0" VerticalAlignment="Top" Width="120" x:Name="Weiter" Click="Weiter_Click" Height="27"/>
+        <TextBlock HorizontalAlignment="Left" Height="59" Margin="593,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" RenderTransformOrigin="0.544,1.615" FontStyle="Italic" FontWeight="Bold" TextDecorations="Underline"><Run Text="Vermietungszeitraum"/><InlineUIContainer>
+                <TextBox IsReadOnly="True" x:Name="Vermietungszeitraum" Height="27" TextWrapping="Wrap" Text="" Width="138" RenderTransformOrigin="0.467,1.552" FontWeight="Normal" FontStyle="Italic"/>
+            </InlineUIContainer></TextBlock>
+        <Label Content="Zeitraumsauswahl" Height="41" Margin="346,23,282,0" VerticalAlignment="Top" Width="172" FontSize="18" FontWeight="Bold" FontStyle="Italic" HorizontalAlignment="Center"/>
+    </Grid>
+</Window>
+

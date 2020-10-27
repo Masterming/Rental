@@ -1,4 +1,4 @@
-﻿using SerializeLib;
+using SerializeLib;
 using System;
 using System.Collections.Generic;
 using System.Text;

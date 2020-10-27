@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Reflection.PortableExecutable;
@@ -47,7 +47,8 @@ namespace Serverside
                 throw new Exception("stateOverflow in PromisMapElement");
         }
 
-        public State getState()
+
+        public State GetState()
         {
             return state;
         }

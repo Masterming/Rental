@@ -1,0 +1,33 @@
+﻿<Window x:Class="Clientside.Bestellung"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Bestellung" Height="572.667" Width="866.667">
+    <Grid>
+        <Rectangle Fill="#FFF4F4F5" Height="416" Stroke="Black" VerticalAlignment="Top" Margin="40,67,32,0"/>
+        <Label Content="Bestellübersicht" Margin="40,31,0,0" VerticalAlignment="Top" Width="145" HorizontalAlignment="Left" FontSize="18" FontWeight="Bold" FontStyle="Italic" Height="36"/>
+        <StackPanel HorizontalAlignment="Left" Height="369" Margin="58,72,0,0" VerticalAlignment="Top" Width="614">
+            <Label Content="Fahrzeugdetails:" FontSize="16" FontWeight="Bold"/>
+            <TextBlock TextWrapping="Wrap" Text="Marke"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
+            <TextBlock TextWrapping="Wrap" Text="Modell"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
+            <TextBlock TextWrapping="Wrap" Text="Leistung"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="...."/>
+            <TextBlock TextWrapping="Wrap" Text="Sitzplätze"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
+            <TextBlock TextWrapping="Wrap" Text="Kraftstoff"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
+            <TextBlock TextWrapping="Wrap" Text="Antriebsart"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
+            <TextBlock TextWrapping="Wrap" Text="Preis"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
+            <TextBlock TextWrapping="Wrap" Text="Vermietungszeitraum"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="TextBox"/>
+        </StackPanel>
+        <Button Content="Bestellen!" HorizontalAlignment="Left" Height="29" Margin="714,421,0,0" VerticalAlignment="Top" Width="62" Click="Button_Click"/>
+
+    </Grid>
+</Window>

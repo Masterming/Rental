@@ -1,3 +1,4 @@
+
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Text;
@@ -30,7 +31,7 @@ namespace Serverside
             return ret;
         }
 
-        public static int count()
+        public static int Count()
         {
             mapMutex.WaitOne(-1);
             int ret = map.Count;
