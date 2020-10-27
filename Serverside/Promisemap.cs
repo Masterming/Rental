@@ -25,8 +25,15 @@ namespace Serverside
         public static bool Remove(int id)
         {
             mapMutex.WaitOne(-1);
-            PromiseMapElement tmp;
-            bool ret = map.TryRemove(id, out tmp);
+
+            bool ret = false;
+
+            if (map[id].Acquire(100))
+            {
+                PromiseMapElement tmp;
+                ret = map.TryRemove(id, out tmp);
+            }
+
             mapMutex.ReleaseMutex();
             return ret;
         }

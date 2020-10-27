@@ -21,7 +21,7 @@ namespace Serverside
             PromiseMapElement elem = new PromiseMapElement(client, r);
             elem.ToggleState();
             int id = Promisemap.Add(elem);
-            //TODO run SQL Socket
+            SQL_Socket.execute(id);
         }
     }
 }
