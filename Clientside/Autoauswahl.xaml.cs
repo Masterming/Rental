@@ -93,6 +93,14 @@ namespace Clientside
             this.Hide();
         }
 
+        private void Zurück_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow datumsauswahl = new MainWindow();
+            datumsauswahl.Show();
+            this.Hide();
+        }
+
+
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Application.Current.Shutdown();

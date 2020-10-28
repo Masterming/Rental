@@ -30,7 +30,7 @@ namespace Clientside
             Vermietungszeitraum.Text = car.brand;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Bestellen_Click(object sender, RoutedEventArgs e)
         {
             DateTime start = (DateTime)Application.Current.Properties["start"];
             DateTime end = (DateTime)Application.Current.Properties["end"];
@@ -56,6 +56,13 @@ namespace Clientside
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void Autoauswahl_Click(object sender, RoutedEventArgs e)
+        {
+            Autoauswahl autoauswahl = new Autoauswahl();
+            autoauswahl.Show();
+            this.Hide();
         }
     }
 }

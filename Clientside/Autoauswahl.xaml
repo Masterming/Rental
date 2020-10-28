@@ -4,16 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Closing="Window_Closing"  
-        Title="Autoauswahl" Height="500" Width="800">
+        Closing="Window_Closing"
+        Title="Autoauswahl" Height="500" Width="800" Background="DarkOrange">
     <Grid>
-        <ComboBox IsReadOnly="True" Focusable="False" IsEditable="True" Text="Marke" x:Name ="Marke" HorizontalAlignment="Left" Margin="73,46,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox IsReadOnly="True" Focusable="False" IsEditable="True" Text="Typ"  x:Name ="Typ" HorizontalAlignment="Left" Margin="236,46,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox IsReadOnly="True" Focusable="False" IsEditable="True" Text="Kraftstoff"  x:Name ="Kraftstoff" HorizontalAlignment="Left" Margin="405,46,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox Background="Black" Foreground="DarkOrange" BorderBrush="Black" BorderThickness="2" IsReadOnly="True" Focusable="False" IsEditable="True" Text="Marke" x:Name ="Marke" HorizontalAlignment="Left" Margin="73,46,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox Background="Black" Foreground="DarkOrange" BorderBrush="Black" BorderThickness="2" IsReadOnly="True" Focusable="False" IsEditable="True" Text="Typ"  x:Name ="Typ" HorizontalAlignment="Left" Margin="236,46,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox Background="Black" Foreground="DarkOrange" BorderBrush="Black" BorderThickness="2" IsReadOnly="True" Focusable="False" IsEditable="True" Text="Kraftstoff"  x:Name ="Kraftstoff" HorizontalAlignment="Left" Margin="405,46,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock Margin="0,10,0.333,0" TextWrapping="Wrap" Text="Autoauswahl" VerticalAlignment="Top" Height="31" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline" FontSize="20" TextAlignment="Center"/>
 
-
-        <Grid Margin="20" x:Name="Autos">
+                <Grid Margin="20" x:Name="Autos">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -31,22 +30,23 @@
         </Grid>
         
         <StackPanel HorizontalAlignment="Left" Height="365" Margin="641,45,0,0" VerticalAlignment="Top" Width="100">
-            <TextBlock TextWrapping="Wrap" Text="Fahrzeugdetails:" FontWeight="Bold"/>
-            <TextBlock TextWrapping="Wrap" Text="Marke:"/>
+            <TextBlock TextWrapping="Wrap" FontSize="13" Text="Fahrzeugdetails:" Foreground="DarkOrange" Background="Black" FontWeight="Bold"/>
+            <TextBlock TextWrapping="Wrap" FontWeight="Black" Text="Marke:"/>
             <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" Background="#eee" Margin=" 0 0 0 10"/>
-            <TextBlock TextWrapping="Wrap" Text="Modell:"/>
+            <TextBlock TextWrapping="Wrap" FontWeight="Black" Text="Modell:"/>
             <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" Background="#eee" Margin=" 0 0 0 10"/>
-            <TextBlock TextWrapping="Wrap" Text="Leistung:"/>
+            <TextBlock TextWrapping="Wrap" FontWeight="Black" Text="Leistung:"/>
             <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" Background="#eee" Margin=" 0 0 0 10"/>
-            <TextBlock TextWrapping="Wrap" Text="Sitzplätze:"/>
+            <TextBlock TextWrapping="Wrap" FontWeight="Black" Text="Sitzplätze:"/>
             <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" Background="#eee" Margin=" 0 0 0 10"/>
-            <TextBlock TextWrapping="Wrap" Text="Kraftstoff:"/>
+            <TextBlock TextWrapping="Wrap" FontWeight="Black" Text="Kraftstoff:"/>
             <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" Background="#eee" Margin=" 0 0 0 10"/>
-            <TextBlock TextWrapping="Wrap" Text="Antriebsart:"/>
+            <TextBlock TextWrapping="Wrap" FontWeight="Black" Text="Antriebsart:"/>
             <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" Background="#eee" Margin=" 0 0 0 10"/>
-            <TextBlock TextWrapping="Wrap" Text="Preis:"/>
+            <TextBlock TextWrapping="Wrap" FontWeight="Black" Text="Preis:"/>
             <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" Background="#eee" Margin=" 0 0 0 10" />
         </StackPanel>
-        <Button x:Name ="Weiter" Click ="Weiter_Click" Content="Weiter" HorizontalAlignment="Left" Margin="641,410,0,0" VerticalAlignment="Top" Width="81" Height="25" FontWeight="Bold"/>
+        <Button x:Name ="Weiter" Foreground="black" Background="Orange" BorderBrush="White" BorderThickness="3" Click ="Weiter_Click" Content="Weiter" HorizontalAlignment="Left" Margin="641,410,0,0" VerticalAlignment="Top" Width="81" Height="25" FontWeight="Bold"/>
+        <Button x:Name ="Zurück" Foreground="DarkOrange" Background="Black" BorderBrush="WhiteSmoke" BorderThickness="2" Click ="Zurück_Click" Content="Zurück" HorizontalAlignment="Left" Margin="73,449,0,0" VerticalAlignment="Top" Width="81" Height="25" FontWeight="Bold"/>
     </Grid>
 </Window>

@@ -5,17 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Closing="Window_Closing"  
-        Title="Terminauswahl" Height="450" Width="800">
+        Title="Terminauswahl"
+        Height="450" Width="800"
+        Background="DarkOrange">
     <Grid>
-        <DatePicker HorizontalAlignment="Left" Margin="57,110,0,0" VerticalAlignment="Top" Height="182" Width="187" x:Name="Abholdatum" SelectedDateChanged="SelectedDateChanged"/>
-        <DatePicker HorizontalAlignment="Left" Margin="361,110,0,0" VerticalAlignment="Top" Height="182" Width="187" x:Name="Rückgabedatum" SelectedDateChanged="SelectedDateChanged"/>
-        <TextBlock HorizontalAlignment="Left" Height="36" Margin="58,69,0,0" TextWrapping="Wrap" Text="Abholdatum" VerticalAlignment="Top" Width="186" FontSize="20" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline"/>
-        <TextBlock HorizontalAlignment="Left" Height="41" Margin="361,69,0,0" TextWrapping="Wrap" Text="Rückgabedatum" VerticalAlignment="Top" Width="187" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline" FontSize="20"/>
-        <Button Content="Autoauswahl" HorizontalAlignment="Left" Margin="593,330,0,0" VerticalAlignment="Top" Width="120" x:Name="Weiter" Click="Weiter_Click" Height="27"/>
-        <TextBlock HorizontalAlignment="Left" Height="59" Margin="593,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" RenderTransformOrigin="0.544,1.615" FontStyle="Italic" FontWeight="Bold" TextDecorations="Underline"><Run Text="Vermietungszeitraum"/><InlineUIContainer>
-                <TextBox IsReadOnly="True" x:Name="Vermietungszeitraum" Height="45" TextWrapping="Wrap" Text="" Width="138" RenderTransformOrigin="0.467,1.552" FontWeight="Normal" Background="#eee" FontStyle="Italic"/>
+        <DatePicker Background="Orange"  BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Margin="194,129,0,0" VerticalAlignment="Top" Height="182" Width="187" x:Name="Abholdatum" SelectedDateChanged="SelectedDateChanged"/>
+        <DatePicker BorderBrush="Black" BorderThickness="3" Background="Orange"  HorizontalAlignment="Left" Margin="429,129,0,0" VerticalAlignment="Top" Height="182" Width="187" x:Name="Rückgabedatum" SelectedDateChanged="SelectedDateChanged"/>
+        <TextBlock HorizontalAlignment="Left" Height="36" Margin="195,88,0,0" TextWrapping="Wrap" Text="Abholdatum" VerticalAlignment="Top" Width="186" FontSize="20" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline"/>
+        <TextBlock HorizontalAlignment="Left" Height="41" Margin="429,88,0,0" TextWrapping="Wrap" Text="Rückgabedatum" VerticalAlignment="Top" Width="187" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline" FontSize="20"/>
+        <Button Background="Black" FontWeight="Bold" BorderBrush="WhiteSmoke" BorderThickness="2" Content="Autoauswahl" Foreground="DarkOrange" HorizontalAlignment="Left" Margin="595,346,0,0" VerticalAlignment="Top" Width="120" x:Name="Weiter" Click="Weiter_Click" Height="27"/>
+        <TextBlock HorizontalAlignment="Left" Height="59" Margin="344,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="141" RenderTransformOrigin="0.544,1.615" FontStyle="Italic" FontWeight="Bold" TextDecorations="Underline"><Run Text="Vermietungszeitraum"/><InlineUIContainer>
+                <TextBox Background="Beige"  Foreground="Black"  IsReadOnly="True" x:Name="Vermietungszeitraum" Height="27" TextWrapping="Wrap" Text="" Width="139" RenderTransformOrigin="0.467,1.552" FontWeight="Normal" FontStyle="Italic"/>
             </InlineUIContainer></TextBlock>
-        <Label Content="Zeitraumsauswahl" Height="41" Margin="0,23,0,0" VerticalAlignment="Top" Width="172" FontSize="18" FontWeight="Bold" FontStyle="Italic" HorizontalAlignment="Center"/>
+        <Label Content="Zeitraumsauswahl" Height="41" Margin="0,23,0,0" VerticalAlignment="Top" Width="226" Foreground="White" FontSize="22" FontWeight="Bold" FontStyle="Italic" HorizontalAlignment="Center"/>
     </Grid>
 </Window>
 
