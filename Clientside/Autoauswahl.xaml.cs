@@ -50,5 +50,12 @@ namespace Clientside
             bestellung.Show();
             this.Hide();
         }
+
+        private void Zurück_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow datumsauswahl = new MainWindow();
+            datumsauswahl.Show();
+            this.Hide();
+        }
     }
 }
