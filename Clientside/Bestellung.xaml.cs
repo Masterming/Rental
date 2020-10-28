@@ -40,7 +40,7 @@ namespace Clientside
             string json = JsonSerializer.Serialize(req);
             string tmp = client.Send(json);
             Response res = JsonSerializer.Deserialize<Response>(tmp);
-            if (res.errorCode == "ok")
+            if (res.errorCode == "OK")
             {
                 Bestellen.IsEnabled = false;
                 MessageBoxResult result = MessageBox.Show("Auto erfolgreich gemietet. Beenden?", "Success", MessageBoxButton.YesNo);
