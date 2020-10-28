@@ -84,8 +84,8 @@ namespace Clientside
                 BorderBrush = Brushes.White,
                 BorderThickness = new Thickness(3)
             };
-            b.SetValue(Grid.RowProperty, ((id-1)/4)+1);
-            b.SetValue(Grid.ColumnProperty, (id - 1) % 4);
+            b.SetValue(Grid.RowProperty, ((id)/4)+1);
+            b.SetValue(Grid.ColumnProperty, (id) % 4);
             b.Click += new RoutedEventHandler(Model_Click);
 
             Autos.Children.Add(b);

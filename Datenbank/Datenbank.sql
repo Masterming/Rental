@@ -8,21 +8,21 @@ CREATE TABLE Vermietung (VermietungID int NOT NULL PRIMARY KEY, Anfang date, End
 CREATE TABLE Kunde (KundenID int NOT NULL PRIMARY KEY, Username char(50), Password char(50), Inhaltzusammenhang char(50));
 
 INSERT INTO Autos (AutoID, Modell, Marke, Kraftstoffart, Leistung, Typ, Sitzplaetze, Tueren, Tagespreis) VALUES
-(1, 'Vierer', 'Bmw', 'Diesel', 188, 'Coupe', 4, 3, 70),
-(2, 'Dreier', 'Bmw', 'Diesel', 256, 'Kombi', 5, 5, 60),
-(3, 'LaFerrari', 'Ferrari', 'Benzin', 950, 'Sport', 2, 3, 200),
-(4, 'Golf', 'VW', 'Diesel', 150, 'Kompakt', 5, 5, 30),
-(5, 'Cherokee', 'Jeep', 'Diesel', 165, 'Gelaende', 5, 5, 40),
-(6, 'RS3', 'Audi', 'Benzin', 400, 'Kompakt', 5, 5, 70),
-(7, 'UP!', 'VW', 'Benzin', 80, 'Kleinwagen', 4, 3, 15),
-(8, 'M4Competition', 'Bmw', 'Benzin', 510, 'Coupe', 4, 3, 150),
-(9, 'Golf Gti TCR', 'VW', 'Benzin', 290, 'Kompaktwagen', 5, 3, 60),
-(10, 'Passat', 'VW', 'Diesel', 150, 'Kombi', 5, 5, 40),
-(11, 'M8Competition', 'Bmw', 'Benzin', 625, 'Coupe', 4, 3, 180),
-(12, '918Spyder', 'Porsche', 'Benzin', 867, 'Sport', 2, 3, 210);
+(0, 'Vierer', 'Bmw', 'Diesel', 188, 'Coupe', 4, 3, 70),
+(1, 'Dreier', 'Bmw', 'Diesel', 256, 'Kombi', 5, 5, 60),
+(2, 'LaFerrari', 'Ferrari', 'Benzin', 950, 'Sport', 2, 3, 200),
+(3, 'Golf', 'VW', 'Diesel', 150, 'Kompakt', 5, 5, 30),
+(4, 'Cherokee', 'Jeep', 'Diesel', 165, 'Gelaende', 5, 5, 40),
+(5, 'RS3', 'Audi', 'Benzin', 400, 'Kompakt', 5, 5, 70),
+(6, 'UP!', 'VW', 'Benzin', 80, 'Kleinwagen', 4, 3, 15),
+(7, 'M4Competition', 'Bmw', 'Benzin', 510, 'Coupe', 4, 3, 150),
+(8, 'Golf Gti TCR', 'VW', 'Benzin', 290, 'Kompaktwagen', 5, 3, 60),
+(9, 'Passat', 'VW', 'Diesel', 150, 'Kombi', 5, 5, 40),
+(10, 'M8Competition', 'Bmw', 'Benzin', 625, 'Coupe', 4, 3, 180),
+(11, '918Spyder', 'Porsche', 'Benzin', 867, 'Sport', 2, 3, 210);
 
 INSERT INTO Kunde (KundenID, Username, Password, Inhaltzusammenhang) VALUES 
-(1, 'Fritzblob', 'her45lo23', 'BmwVierer'),
-(2, 'Hildediegart', 'her478956', 'VwGolf'),
-(3, 'Herbertsick', 'maur12356', 'FerrariLaFerrari'),
-(4, 'Wombatwilli', 'brummdidumm', 'BmwDreier');
+(0, 'Fritzblob', 'her45lo23', 'BmwVierer'),
+(1, 'Hildediegart', 'her478956', 'VwGolf'),
+(2, 'Herbertsick', 'maur12356', 'FerrariLaFerrari'),
+(3, 'Wombatwilli', 'brummdidumm', 'BmwDreier');
