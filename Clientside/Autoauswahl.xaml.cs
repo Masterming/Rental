@@ -1,4 +1,10 @@
-﻿using System.Windows;
+﻿using SerializeLib;
+using System;
+using System.Collections.Generic;
+using System.Windows;
+using System.Text.Json;
+using WebsocketLib;
+
 
 namespace Clientside
 {
@@ -8,35 +14,38 @@ namespace Clientside
     public partial class Autoauswahl : Window
     {
         private readonly double taeglicherPreis = 300;
+        private List<Car> cars;
+        Client client;
 
         public Autoauswahl()
         {
             InitializeComponent();
 
-            // TODO: get data from server
-            // Client client = (Client) Application.Current.Properties["client"];
-            // DateTime start = (DateTime)Application.Current.Properties["start"];
-            // DateTime end = (DateTime)Application.Current.Properties["end"];
-            // client.GetData(start.ToShortDateString(), end.ToShortDateString();
+            DateTime start = (DateTime)Application.Current.Properties["start"];
+            DateTime end = (DateTime)Application.Current.Properties["end"];
 
-            Marke.Items.Add("BMW");
-            Marke.Items.Add("Mercedes");
-            Marke.Items.Add("Ferarri");
-            Marke.Items.Add("Audi");
-            Marke.Items.Add("Porsche");
-            Marke.Items.Add("VW");
-            Marke.Items.Add("Jeep");
+            Request req = new Request(start, end);
+            string json = JsonSerializer.Serialize(req);
+            string tmp = client.Send(json);
+            Response res = JsonSerializer.Deserialize<Response>(tmp);
 
-            Typ.Items.Add("Kompaktwagen");
-            Typ.Items.Add("Sport");
-            Typ.Items.Add("SUV");
-            Typ.Items.Add("Coupe");
-            Typ.Items.Add("Gelände");
-            Typ.Items.Add("Limousine");
+            if (res.errorCode == "ok")
+            {
+                cars = res.cars;
+            }
+            else
+            {
+                MessageBox.Show("Please try again");
+            }
 
-            Kraftstoff.Items.Add("Elektro");
-            Kraftstoff.Items.Add("Diesel");
-            Kraftstoff.Items.Add("Benzin");
+            client = (Client)Application.Current.Properties["client"];
+
+            foreach(Car c in cars)
+            {
+                Marke.Items.Add(c.brand);
+                Typ.Items.Add(c.type);
+                Kraftstoff.Items.Add(c.fueltype);
+            }
         }
 
         private void Model_Click(object sender, RoutedEventArgs e)
@@ -46,6 +55,24 @@ namespace Clientside
 
         private void Weiter_Click(object sender, RoutedEventArgs e)
         {
+            /*
+            Request req = new Request(start, end); 
+            string json = JsonSerializer.Serialize(req);
+            string tmp = client.Send(json);
+            Response res = JsonSerializer.Deserialize<Response>(tmp);
+            if (res.errorCode == "ok")
+            {
+                Application.Current.Properties["cars"] = res.cars;
+
+                Autoauswahl a = new Autoauswahl();
+                a.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Please try again");
+            }
+            */
             Bestellung bestellung = new Bestellung(taeglicherPreis);
             bestellung.Show();
             this.Hide();
