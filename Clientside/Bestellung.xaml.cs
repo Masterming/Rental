@@ -10,7 +10,7 @@ namespace Clientside
     /// </summary>
     public partial class Bestellung : Window
     {
-        int id;
+        private readonly int id;
 
         public Bestellung(Car car, int id)
         {

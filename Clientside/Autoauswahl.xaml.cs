@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using System.Windows.Media;
 
 namespace Clientside
 {
@@ -14,7 +15,7 @@ namespace Clientside
     public partial class Autoauswahl : Window
     {
         private List<Car> cars;
-        int id = -1;
+        private int id = -1;
 
         public Autoauswahl()
         {
@@ -69,7 +70,10 @@ namespace Clientside
             Button b = new Button
             {
                 Name = id.ToString(),
-                Content = sp
+                Content = sp,
+                Background = Brushes.Orange,
+                BorderBrush = Brushes.White,
+                BorderThickness = new Thickness(3)
             };
             b.Click += new RoutedEventHandler(Model_Click);
 
@@ -78,7 +82,16 @@ namespace Clientside
 
         private void Model_Click(object sender, RoutedEventArgs e)
         {
+            Button b = (Button)sender;
+            int.TryParse(b.Name, out id);
 
+            Marke.Text = cars[id].brand;
+            DetailsModell.Text = cars[id].model;
+            DetailsLeistung.Text = cars[id].power.ToString();
+            DetailsSitzplaetze.Text = cars[id].seats.ToString();
+            DetailsKraftstoff.Text = cars[id].fueltype;
+            DetailsAntriebsart.Text = cars[id].type;
+            Preis.Text = cars[id].pricePerDay.ToString();
         }
 
         private void Weiter_Click(object sender, RoutedEventArgs e)
