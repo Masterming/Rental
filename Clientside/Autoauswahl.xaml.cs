@@ -27,28 +27,29 @@ namespace Clientside
             Client client = (Client)Application.Current.Properties["client"];
             Request req = new Request(start, end);
             string json = JsonSerializer.Serialize(req);
+            System.Diagnostics.Trace.WriteLine($"sent JSON: {json}\n");
             string tmp = client.Send(json);
+            System.Diagnostics.Trace.WriteLine($"received JSON: {tmp}\n");
             if(tmp == "")
                 MessageBox.Show("Server is currently not availiable");
             else {
                 Response res = JsonSerializer.Deserialize<Response>(tmp);
 
-                if (res.errorCode == "ok")
+                if (res.errorCode == "OK" && cars != null)
                 {
                     cars = res.cars;
+                    for (int id = 0; id < cars.Count; id++)
+                    {
+                        Marke.Items.Add(cars[id].brand);
+                        Typ.Items.Add(cars[id].type);
+                        Kraftstoff.Items.Add(cars[id].fueltype);
+                        AddStack(cars[id].id, cars[id].model);
+                    }
                 }
                 else
                 {
                     MessageBox.Show("Please try again", "Error");
-                }
-
-                for(int id = 0; id < cars.Count; id++)
-                {
-                    Marke.Items.Add(cars[id].brand);
-                    Typ.Items.Add(cars[id].type);
-                    Kraftstoff.Items.Add(cars[id].fueltype);
-                    AddStack(cars[id].id, cars[id].model);
-                }
+                }                
             }
         }
 

@@ -14,6 +14,7 @@ namespace Serverside
         private static SqliteConnection db;
         private static Mutex dbMutex = new Mutex();
         private static bool init = false;
+        private static uint vermietungID = 20;
 
         public static void execute(int id)
         {
@@ -38,8 +39,8 @@ namespace Serverside
                 if (!init)
                 {
                     init = true;
-                    string source = $"..\\..\\..\\..\\..\\Datenbank\\Datenbank.sql";
-                    string destination = $"..\\..\\..\\..\\..\\Datenbank\\Datenbank.db";
+                    string source = $"..\\..\\..\\..\\Datenbank\\Datenbank.sql";
+                    string destination = $"..\\..\\..\\..\\Datenbank\\Datenbank.db";
 
                     bool tmp = false;
                     if (!File.Exists(destination))
@@ -59,23 +60,23 @@ namespace Serverside
                     command.CommandText =
                     @"
                     SELECT *
-                    FROM Autos
-                    WHERE NOT EXISTS(
-                        SELECT 1
-                        FROM Vermietung
-                        WHERE (Anfang <= $endDate AND >= $startDate)
-                        OR (Ende >= $startDate AND Ende <= $endDate)
-                        )
-                    ";
-                    command.Parameters.AddWithValue("$startDate", startDate);
-                    command.Parameters.AddWithValue("$endDate", endDate);
+                    FROM Autos";
+                    //WHERE NOT EXISTS(
+                    //    SELECT 1
+                    //    FROM Vermietung
+                    //    WHERE (Anfang <= $endDate AND Anfang >= $startDate)
+                    //    OR (Ende >= $startDate AND Ende <= $endDate)
+                    //    )
+                    //";
+                    //command.Parameters.AddWithValue("$startDate", startDate);
+                    //command.Parameters.AddWithValue("$endDate", endDate);
                 }
                 else
                 {
                     command.CommandText =
                         @"
-                        INSERT INTO Vermietung (Anfang, Ende, AutoID)
-                        VALUES($startDate, $endDate, $id)
+                        INSERT INTO Vermietung (VermietungID, Anfang, Ende, AutoID)
+                        VALUES($vermietungID, $startDate, $endDate, $id)
                         WHERE NOT EXISTS(
                             SELECT 1
                             FROM Vermietung
@@ -83,6 +84,7 @@ namespace Serverside
                             OR (Ende >= $startDate AND Ende <= $endDate)
                         )
                         ";
+                    command.Parameters.AddWithValue("$vermietungID", vermietungID++);
                     command.Parameters.AddWithValue("$startDate", startDate);
                     command.Parameters.AddWithValue("$endDate", endDate);
                     command.Parameters.AddWithValue("$id", id);
@@ -96,15 +98,17 @@ namespace Serverside
                 {
                     //AutoID int AUTO_INCREMENT NOT NULL PRIMARY KEY, Modell char(50), Marke char(50),
                     //Kraftstoffart char(50), Leistung int, Typ char(50), Sitzplaetze int, Tueren int, Tagespreis int
-                    int _AutoID = reader.GetInt32(1);
-                    string _model = reader.GetString(2);
-                    string _brand = reader.GetString(3);
-                    string _fueltype = reader.GetString(4);
-                    int _power = reader.GetInt32(5);
-                    string _type = reader.GetString(6);
-                    int _seats = reader.GetInt32(7);
-                    int _doors = reader.GetInt32(8);
-                    int _pricePerDay = reader.GetInt32(9);
+                    int _AutoID = reader.GetInt32(0);
+                    string _model = reader.GetString(1);
+                    string _brand = reader.GetString(2);
+                    string _fueltype = reader.GetString(3);
+                    int _power = reader.GetInt32(4);
+                    string _type = reader.GetString(5);
+                    int _seats = reader.GetInt32(6);
+                    int _doors = reader.GetInt32(7);
+                    int _pricePerDay = reader.GetInt32(8);
+
+                    Console.WriteLine($"\tCar: {_AutoID}, {_model}, {_brand}, {_fueltype}, {_power}, {_type}, {_seats}, {_doors}, {_pricePerDay}");
 
                     cars.Add(new Car(_AutoID, _model, _brand, _fueltype, _power, _type, _seats, _doors, _pricePerDay));
                 }

@@ -5,6 +5,7 @@ using System.Text.Json.Serialization;
 using WebsocketLib;
 using SerializeLib;
 using System.Threading;
+using System.Text;
 
 namespace Serverside
 {
@@ -31,8 +32,9 @@ namespace Serverside
             string json = JsonSerializer.Serialize(res);
 
             // Send back a response.
-            Lib.Write(client, json, false);
-            Console.WriteLine($"({ip}) Sent: {res}");
+            Lib.Write(client, json, true);
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.WriteLine($"({ip}) Sent: {json}");
 
             // Disconnect client after sending the response
             client.Close();

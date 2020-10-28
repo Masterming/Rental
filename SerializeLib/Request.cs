@@ -4,9 +4,11 @@ namespace SerializeLib
 {
     public class Request
     {
-        public readonly DateTime start;
-        public readonly DateTime end;
-        public readonly int carID;
+        public DateTime start { get; set; }
+        public DateTime end { get; set; }
+        public int carID { get; set; }
+
+        public Request() { }
 
         public Request(DateTime _start, DateTime _end, int id = -1)
         {
