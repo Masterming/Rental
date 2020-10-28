@@ -39,15 +39,15 @@ namespace Clientside
                 if (res.errorCode == "OK" && res.cars != null)
                 {
                     cars = res.cars;
-                    for (int id = 0; id < cars.Count; id++)
+                    for (int i = 0; i < cars.Count; i++)
                     {
-                        if (!Marke.Items.Contains(cars[id].brand))
-                            Marke.Items.Add(cars[id].brand);
-                        if (!Typ.Items.Contains(cars[id].type))
-                            Typ.Items.Add(cars[id].type);
-                        if (!Kraftstoff.Items.Contains(cars[id].fueltype))
-                            Kraftstoff.Items.Add(cars[id].fueltype);
-                        AddStack(cars[id].id, cars[id].model);
+                        if (!Marke.Items.Contains(cars[i].brand))
+                            Marke.Items.Add(cars[i].brand);
+                        if (!Typ.Items.Contains(cars[i].type))
+                            Typ.Items.Add(cars[i].type);
+                        if (!Kraftstoff.Items.Contains(cars[i].fueltype))
+                            Kraftstoff.Items.Add(cars[i].fueltype);
+                        AddStack(i, cars[i]);
                     }
                 }
                 else
@@ -61,15 +61,16 @@ namespace Clientside
             }
         }
 
-        private void AddStack(int id, string text)
+        private void AddStack(int i, Car car)
         {
             Image img = new Image
             {
-                Source = new BitmapImage(new Uri($"Pictures/{id}.jpg", UriKind.Relative))
+                Source = new BitmapImage(new Uri($"Pictures/{id}.jpg", UriKind.Relative)),
+                Width = 94
             };
             TextBlock tb = new TextBlock
             {
-                Text = text
+                Text = car.model
             };
 
             StackPanel sp = new StackPanel();
@@ -84,8 +85,8 @@ namespace Clientside
                 BorderBrush = Brushes.White,
                 BorderThickness = new Thickness(3)
             };
-            b.SetValue(Grid.RowProperty, ((id-1)/4)+1);
-            b.SetValue(Grid.ColumnProperty, (id - 1) % 4);
+            b.SetValue(Grid.RowProperty, (i/4)+1);
+            b.SetValue(Grid.ColumnProperty, i % 4);
             b.Click += new RoutedEventHandler(Model_Click);
 
             Autos.Children.Add(b);
