@@ -4,63 +4,63 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Autoauswahl" Height="500" Width="800">
+        Title="Autoauswahl" Height="500" Width="800" Background="DarkOrange">
     <Grid>
-        <ComboBox IsReadOnly="True" Focusable="False" IsEditable="True" Text="Marke" x:Name ="Marke" HorizontalAlignment="Left" Margin="73,46,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox IsReadOnly="True" Focusable="False" IsEditable="True" Text="Typ"  x:Name ="Typ" HorizontalAlignment="Left" Margin="236,46,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox IsReadOnly="True" Focusable="False" IsEditable="True" Text="Kraftstoff"  x:Name ="Kraftstoff" HorizontalAlignment="Left" Margin="405,46,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox Background="Black" Foreground="DarkOrange" BorderBrush="Black" BorderThickness="2" IsReadOnly="True" Focusable="False" IsEditable="True" Text="Marke" x:Name ="Marke" HorizontalAlignment="Left" Margin="73,46,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox Background="Black" Foreground="DarkOrange" BorderBrush="Black" BorderThickness="2" IsReadOnly="True" Focusable="False" IsEditable="True" Text="Typ"  x:Name ="Typ" HorizontalAlignment="Left" Margin="236,46,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox Background="Black" Foreground="DarkOrange" BorderBrush="Black" BorderThickness="2" IsReadOnly="True" Focusable="False" IsEditable="True" Text="Kraftstoff"  x:Name ="Kraftstoff" HorizontalAlignment="Left" Margin="405,46,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock Margin="0,10,0.333,0" TextWrapping="Wrap" Text="Autoauswahl" VerticalAlignment="Top" Height="31" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline" FontSize="20" TextAlignment="Center"/>
-        <Button x:Name="M8" Click="Model_Click" Margin="77,94,616.333,0" VerticalAlignment="Top" Height="86" Width="100">
+        <Button Background="Orange" BorderBrush="White" BorderThickness="3" x:Name="M8" Click="Model_Click" Margin="77,94,616.333,0" VerticalAlignment="Top" Height="86" Width="100">
             <StackPanel>
                 <Image Source="Pictures/BMW M8 Gran Coupé.jpg" />
                 <TextBlock>M8</TextBlock>
             </StackPanel>
         </Button>
-        <Button x:Name="A3" Click="Model_Click" Margin="203,94,490.333,0" VerticalAlignment="Top" Height="86" Width="100">
+        <Button Background="Orange" BorderBrush="White" BorderThickness="3" x:Name="A3" Click="Model_Click" Margin="203,94,490.333,0" VerticalAlignment="Top" Height="86" Width="100">
             <StackPanel>
                 <Image Source="Pictures/Audi A3 Limousine.jpg" />
                 <TextBlock>A3</TextBlock>
             </StackPanel>
         </Button>
-        <Button x:Name="RS3" Click="Model_Click" Margin="326,94,367.333,0" VerticalAlignment="Top" Height="86" Width="100">
+        <Button Background="Orange" BorderBrush="White" BorderThickness="3" x:Name="RS3" Click="Model_Click" Margin="326,94,367.333,0" VerticalAlignment="Top" Height="86" Width="100">
             <StackPanel>
                 <Image Source="Pictures/Audi RS3.jpg" />
                 <TextBlock>RS3</TextBlock>
             </StackPanel>
         </Button>
-        <Button x:Name="M4" Click="Model_Click" Margin="452,94,241.333,0" VerticalAlignment="Top" Height="86" Width="100">
+        <Button Background="Orange" BorderBrush="White" BorderThickness="3" x:Name="M4" Click="Model_Click" Margin="452,94,241.333,0" VerticalAlignment="Top" Height="86" Width="100">
             <StackPanel>
-                <Image Source="Pictures/BMW M4 Competition.jpg" />
-                <TextBlock>M4 Competition</TextBlock>
+                <Image Source="Pictures/BMW M4 Competition.jpg" Height="63" Width="94" />
+                <TextBlock RenderTransformOrigin="0.489,-0.875" Height="20">M4 Competition</TextBlock>
             </StackPanel>
         </Button>
-        <Button x:Name="X6" Click="Model_Click" Margin="77,210,616.333,0" VerticalAlignment="Top" Height="86" Width="100">
+        <Button Background="Orange" BorderBrush="White" BorderThickness="3" x:Name="X6" Click="Model_Click" Margin="77,210,616.333,0" VerticalAlignment="Top" Height="86" Width="100">
             <StackPanel>
                 <Image Source="Pictures/BMW X6.jpg" />
                 <TextBlock>X6</TextBlock>
             </StackPanel>
         </Button>
-        <Button x:Name="LaFerrari" Click="Model_Click" Margin="326,210,367.333,0" VerticalAlignment="Top" Height="86" Width="100">
+        <Button Background="Orange" BorderBrush="White" BorderThickness="3" x:Name="LaFerrari" Click="Model_Click" Margin="326,210,367.333,0" VerticalAlignment="Top" Height="86" Width="100">
             <StackPanel>
                 <Image Source="Pictures/Ferrari LaFerrari.jpg" />
                 <TextBlock>LaFerrari</TextBlock>
             </StackPanel>
         </Button>
-        <Button x:Name="GTI" Click="Model_Click" Margin="203,210,490.333,0" VerticalAlignment="Top" Height="86" Width="100">
+        <Button Background="Orange" BorderBrush="White" BorderThickness="3" x:Name="GTI" Click="Model_Click" Margin="203,210,490.333,0" VerticalAlignment="Top" Height="86" Width="100">
             <StackPanel>
                 <Image Source="Pictures/Golf GTI TCR.jpg" />
                 <TextBlock>GTI TCR</TextBlock>
             </StackPanel>
         </Button>
-        <Button x:Name="Cherokee" Click="Model_Click" Margin="452,210,241.333,0" VerticalAlignment="Top" Height="86" Width="100">
+        <Button Background="Orange" BorderBrush="White" BorderThickness="3" x:Name="Cherokee" Click="Model_Click" Margin="452,210,241.333,0" VerticalAlignment="Top" Height="86" Width="100">
             <StackPanel>
                 <Image Source="Pictures/Jeep-Cherokeejpg.jpg" />
                 <TextBlock>Cherokee</TextBlock>
             </StackPanel>
         </Button>
-        <Button x:Name="GWagon" Click="Model_Click" Margin="77,325,616.333,0" VerticalAlignment="Top" Height="86" Width="100">
+        <Button Background="Orange" BorderBrush="White" BorderThickness="3" x:Name="GWagon" Click="Model_Click" Margin="77,325,616.333,0" VerticalAlignment="Top" Height="86" Width="100">
             <StackPanel>
-                <Image Source="Pictures/Mercedes Benz G-Class.jpg" Height="67" RenderTransformOrigin="0.5,0.5" Width="94" >
+                <Image Source="Pictures/Mercedes Benz G-Class.jpg" Height="61" RenderTransformOrigin="0.5,0.5" Width="94" >
                     <Image.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleX="-1"/>
@@ -70,44 +70,45 @@
                         </TransformGroup>
                     </Image.RenderTransform>
                 </Image>
-                <TextBlock>G-Wagon</TextBlock>
+                <TextBlock Height="26" RenderTransformOrigin="0.444,-1.284"><Run Text="G-Wagon"/></TextBlock>
             </StackPanel>
         </Button>
-        <Button x:Name="Spyder" Click="Model_Click" Margin="203,325,490.333,0" VerticalAlignment="Top" Height="86" Width="100">
+        <Button Background="Orange" BorderBrush="White" BorderThickness="3" x:Name="Spyder" Click="Model_Click" Margin="203,325,490.333,0" VerticalAlignment="Top" Height="86" Width="100">
             <StackPanel>
-                <Image Source="Pictures/Porsche Spyder 918.jpg" Height="66" Width="90" />
-                <TextBlock>Spyder 918</TextBlock>
+                <Image Source="Pictures/Porsche Spyder 918.jpg" Height="65" Width="90" />
+                <TextBlock Height="23">Spyder 918</TextBlock>
             </StackPanel>
         </Button>
-        <Button x:Name="Passat" Click="Model_Click" Margin="326,325,367.333,0" VerticalAlignment="Top" Height="86" Width="100">
+        <Button Background="Orange" BorderBrush="White" BorderThickness="3" x:Name="Passat" Click="Model_Click" Margin="326,325,367.333,0" VerticalAlignment="Top" Height="86" Width="100">
             <StackPanel>
                 <Image Source="Pictures/VW Passat B8.png" />
                 <TextBlock>Passat</TextBlock>
             </StackPanel>
         </Button>
-        <Button x:Name="Up" Click="Model_Click" Margin="452,325,241.333,0" VerticalAlignment="Top" Height="86" Width="100">
+        <Button Background="Orange" BorderBrush="White" BorderThickness="3" x:Name="Up" Click="Model_Click" Margin="452,325,241.333,0" VerticalAlignment="Top" Height="86" Width="100">
             <StackPanel>
                 <Image Source="Pictures/VW Up!.png" />
                 <TextBlock>Up!</TextBlock>
             </StackPanel>
         </Button>
         <StackPanel HorizontalAlignment="Left" Height="365" Margin="641,45,0,0" VerticalAlignment="Top" Width="100">
-            <TextBlock TextWrapping="Wrap" Text="Fahrzeugdetails:" FontWeight="Bold"/>
-            <TextBlock TextWrapping="Wrap" Text="Marke:"/>
+            <TextBlock TextWrapping="Wrap" FontSize="13" Text="Fahrzeugdetails:" Foreground="DarkOrange" Background="Black" FontWeight="Bold"/>
+            <TextBlock TextWrapping="Wrap" FontWeight="Black" Text="Marke:"/>
             <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" Background="#eee" Margin=" 0 0 0 10"/>
-            <TextBlock TextWrapping="Wrap" Text="Modell:"/>
+            <TextBlock TextWrapping="Wrap" FontWeight="Black" Text="Modell:"/>
             <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" Background="#eee" Margin=" 0 0 0 10"/>
-            <TextBlock TextWrapping="Wrap" Text="Leistung:"/>
+            <TextBlock TextWrapping="Wrap" FontWeight="Black" Text="Leistung:"/>
             <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" Background="#eee" Margin=" 0 0 0 10"/>
-            <TextBlock TextWrapping="Wrap" Text="Sitzplätze:"/>
+            <TextBlock TextWrapping="Wrap" FontWeight="Black" Text="Sitzplätze:"/>
             <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" Background="#eee" Margin=" 0 0 0 10"/>
-            <TextBlock TextWrapping="Wrap" Text="Kraftstoff:"/>
+            <TextBlock TextWrapping="Wrap" FontWeight="Black" Text="Kraftstoff:"/>
             <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" Background="#eee" Margin=" 0 0 0 10"/>
-            <TextBlock TextWrapping="Wrap" Text="Antriebsart:"/>
+            <TextBlock TextWrapping="Wrap" FontWeight="Black" Text="Antriebsart:"/>
             <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" Background="#eee" Margin=" 0 0 0 10"/>
-            <TextBlock TextWrapping="Wrap" Text="Preis:"/>
+            <TextBlock TextWrapping="Wrap" FontWeight="Black" Text="Preis:"/>
             <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" Background="#eee" Margin=" 0 0 0 10" />
         </StackPanel>
-        <Button x:Name ="Weiter" Click ="Weiter_Click" Content="Weiter" HorizontalAlignment="Left" Margin="641,410,0,0" VerticalAlignment="Top" Width="81" Height="25" FontWeight="Bold"/>
+        <Button x:Name ="Weiter" Foreground="black" Background="Orange" BorderBrush="White" BorderThickness="3" Click ="Weiter_Click" Content="Weiter" HorizontalAlignment="Left" Margin="641,410,0,0" VerticalAlignment="Top" Width="81" Height="25" FontWeight="Bold"/>
+        <Button x:Name ="Zurück" Foreground="DarkOrange" Background="Black" BorderBrush="WhiteSmoke" BorderThickness="2" Click ="Zurück_Click" Content="Zurück" HorizontalAlignment="Left" Margin="73,449,0,0" VerticalAlignment="Top" Width="81" Height="25" FontWeight="Bold"/>
     </Grid>
 </Window>

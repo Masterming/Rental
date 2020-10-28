@@ -16,7 +16,6 @@ namespace Clientside
             Client client = new Client("127.0.0.1", 80);
             Application.Current.Properties["client"] = client;
         }
-
         private void Weiter_Click(object sender, RoutedEventArgs e)
         {
             Autoauswahl a = new Autoauswahl();

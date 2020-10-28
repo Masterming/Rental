@@ -22,9 +22,16 @@ namespace Clientside
             //MessageBox.Show("Gesamtpreis: " + gesamt);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Bestellen_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Autoauswahl_Click(object sender, RoutedEventArgs e)
+        {
+            Autoauswahl autoauswahl = new Autoauswahl();
+            autoauswahl.Show();
+            this.Hide();
         }
     }
 }
