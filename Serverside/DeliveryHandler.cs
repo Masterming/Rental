@@ -32,7 +32,7 @@ namespace Serverside
             string json = JsonSerializer.Serialize(res);
 
             // Send back a response.
-            Lib.Write(client, json, true);
+            Lib.Write(client, json, false);
             Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine($"({ip}) Sent: {json}");
 

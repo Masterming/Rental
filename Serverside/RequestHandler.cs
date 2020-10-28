@@ -3,6 +3,7 @@ using SerializeLib;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading;
+using System;
 
 namespace Serverside
 {
@@ -17,11 +18,17 @@ namespace Serverside
 
         static internal void run(TcpClient client, string json)
         {
-            Request r = JsonSerializer.Deserialize<Request>(json);
-            PromiseMapElement elem = new PromiseMapElement(client, r);
-            elem.ToggleState();
-            int id = Promisemap.Add(elem);
-            SQL_Socket.execute(id);
+            try { 
+                Request r = JsonSerializer.Deserialize<Request>(json);
+                PromiseMapElement elem = new PromiseMapElement(client, r);
+                elem.ToggleState();
+                int id = Promisemap.Add(elem);
+                SQL_Socket.execute(id);
+            }
+            catch (JsonException)
+            {
+                Console.WriteLine("ERROR: The Request is not a valid JSON");
+            }
         }
     }
 }

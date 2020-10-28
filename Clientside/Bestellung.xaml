@@ -12,22 +12,22 @@
         <Label Foreground="Black" Content="Bestellübersicht" Margin="341,14,0,0" VerticalAlignment="Top" Width="193" HorizontalAlignment="Left" FontSize="22" FontWeight="Bold" FontStyle="Italic" Height="36"/>
         <StackPanel Background="Orange" HorizontalAlignment="Center" Height="364" VerticalAlignment="Top" Width="621" Margin="0,90,0,0">
             <Label Content="Fahrzeugdetails:" FontSize="16" FontWeight="Bold"/>
-            <TextBlock TextWrapping="Wrap" Text="Marke" x:Name="Marke"/>
-            <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text=""/>
-            <TextBlock TextWrapping="Wrap" Text="Modell" x:Name="Modell"/>
-            <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text=""/>
-            <TextBlock TextWrapping="Wrap" Text="Leistung" x:Name="Leistung"/>
-            <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text=""/>
-            <TextBlock TextWrapping="Wrap" Text="Sitzplätze" x:Name="Sitzplaetze"/>
-            <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text=""/>
-            <TextBlock TextWrapping="Wrap" Text="Kraftstoff" x:Name="Kraftstoff"/>
-            <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text=""/>
-            <TextBlock TextWrapping="Wrap" Text="Antriebsart" x:Name="Antriebsart"/>
-            <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text=""/>
-            <TextBlock TextWrapping="Wrap" Text="Preis" x:Name="Preis"/>
-            <TextBox IsReadOnly="True"  Height="23" TextWrapping="Wrap" Text=""/>
-            <TextBlock TextWrapping="Wrap" Text="Vermietungszeitraum" x:Name="Vermietungszeitraum"/>
-            <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text=""/>
+            <TextBlock TextWrapping="Wrap" Text="Marke"/>
+            <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" x:Name="Marke"/>
+            <TextBlock TextWrapping="Wrap" Text="Modell"/>
+            <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" x:Name="Modell"/>
+            <TextBlock TextWrapping="Wrap" Text="Leistung"/>
+            <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" x:Name="Leistung"/>
+            <TextBlock TextWrapping="Wrap" Text="Sitzplätze"/>
+            <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" x:Name="Sitzplaetze"/>
+            <TextBlock TextWrapping="Wrap" Text="Kraftstoff"/>
+            <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" x:Name="Kraftstoff"/>
+            <TextBlock TextWrapping="Wrap" Text="Antriebsart"/>
+            <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" x:Name="Antriebsart"/>
+            <TextBlock TextWrapping="Wrap" Text="Preis"/>
+            <TextBox IsReadOnly="True"  Height="23" TextWrapping="Wrap" Text="" x:Name="Preis"/>
+            <TextBlock TextWrapping="Wrap" Text="Vermietungszeitraum"/>
+            <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" x:Name="Vermietungszeitraum"/>
         </StackPanel>
         <Button x:Name="Bestellen" Click="Bestellen_Click" Content="Bestellen!" Background="DarkOrange" FontWeight="Bold" BorderBrush="White" BorderThickness="3" FontSize="16" HorizontalAlignment="Center" Height="29" Margin="0,467,0,0" VerticalAlignment="Top" Width="116"/>
         <Button x:Name="Autoauswahl" Click="Autoauswahl_Click" Content="Autoauswahl" FontWeight="Black" Background="White" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="20" Margin="42,513,0,0" VerticalAlignment="Top" Width="101"/>

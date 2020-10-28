@@ -19,8 +19,7 @@ INSERT INTO Autos (AutoID, Modell, Marke, Kraftstoffart, Leistung, Typ, Sitzplae
 (9, 'Golf Gti TCR', 'VW', 'Benzin', 290, 'Kompaktwagen', 5, 3, 60),
 (10, 'Passat', 'VW', 'Diesel', 150, 'Kombi', 5, 5, 40),
 (11, 'M8Competition', 'Bmw', 'Benzin', 625, 'Coupe', 4, 3, 180),
-(12, '918Spyder', 'Porsche', 'Benzin', 867, 'Sport', 2, 3, 210),
-(13, 'GT2RS', 'Porsche', 'Benzin', 700, 'Sport', 2, 3, 190);
+(12, '918Spyder', 'Porsche', 'Benzin', 867, 'Sport', 2, 3, 210);
 
 INSERT INTO Kunde (KundenID, Username, Password, Inhaltzusammenhang) VALUES 
 (1, 'Fritzblob', 'her45lo23', 'BmwVierer'),
