@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Closing="Window_Closing"
-        Title="Autoauswahl" Height="500" Width="800" Background="DarkOrange">
+        Title="Autoauswahl" Height="550" Width="800" Background="DarkOrange">
     <Grid>
         <ComboBox Background="Black" Foreground="DarkOrange" BorderBrush="Black" BorderThickness="2" IsReadOnly="True" Focusable="False" IsEditable="True" Text="Marke" x:Name ="Marke" HorizontalAlignment="Left" Margin="73,46,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox Background="Black" Foreground="DarkOrange" BorderBrush="Black" BorderThickness="2" IsReadOnly="True" Focusable="False" IsEditable="True" Text="Typ"  x:Name ="Typ" HorizontalAlignment="Left" Margin="236,46,0,0" VerticalAlignment="Top" Width="120"/>

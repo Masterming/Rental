@@ -38,7 +38,7 @@ namespace Clientside
                 }
                 else
                 {
-                    MessageBox.Show("Please try again");
+                    MessageBox.Show("Please try again", "Error");
                 }
 
                 for(int id = 0; id < cars.Count; id++)
@@ -85,7 +85,7 @@ namespace Clientside
         {
             if(id == -1)
             {
-                MessageBox.Show("Please select a car");
+                MessageBox.Show("Please select a car", "Fehlendes Auto");
                 return;
             }
             Bestellung bestellung = new Bestellung(cars[id], id);

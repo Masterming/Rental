@@ -42,14 +42,14 @@ namespace Clientside
             Response res = JsonSerializer.Deserialize<Response>(tmp);
             if (res.errorCode == "ok")
             {
-                bestellen.IsEnabled = false;
+                Bestellen.IsEnabled = false;
                 MessageBoxResult result = MessageBox.Show("Auto erfolgreich gemietet. Beenden?", "Success", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                     Application.Current.Shutdown();
             }
             else
             {
-                MessageBox.Show("Please try again");
+                MessageBox.Show("Please try again", "Error");
             }
         }
 
