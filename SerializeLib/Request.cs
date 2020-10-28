@@ -2,6 +2,9 @@
 
 namespace SerializeLib
 {
+    /// <summary>
+    /// Request object for Serialization between client and server.
+    /// </summary>
     public class Request
     {
         public readonly DateTime start;

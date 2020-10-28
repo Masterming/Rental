@@ -2,6 +2,9 @@
 
 namespace SerializeLib
 {
+    /// <summary>
+    /// Response object for serialization between client and server.
+    /// </summary>
     public class Response
     {
         public readonly List<Car> cars;

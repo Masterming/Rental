@@ -9,6 +9,11 @@ using System.Collections;
 
 namespace Serverside
 {
+    /// <summary>
+    /// Implements SQLite connection.
+    /// Forms and executes SQL statements.
+    /// Generates serializable Response Object.
+    /// </summary>
     static class SQL_Socket
     {
         private static SqliteConnection db;
@@ -114,14 +119,16 @@ namespace Serverside
                 db.Close();
 
                 elem.setResponse(new Response("OK", cars));
+                elem.ToggleState();
             }
             catch(Exception e)
             {
                 elem.setResponse(new Response(e.Message));
             }
+
             Promisemap.ReleaseElement(elem);
 
-            DeliveryHandler.Handle(id);
+            DeliveryHandler.Handle(id); //Forward to DeliveryHandler
         }
 
 

@@ -7,6 +7,9 @@ using System.Text;
 
 namespace WebsocketLib
 {
+    /// <summary>
+    /// TCP Util Lib
+    /// </summary>
     public static class Lib
     {
         public static byte[] Read(TcpClient client)

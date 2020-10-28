@@ -6,6 +6,10 @@ using System.Threading;
 
 namespace Serverside
 {
+    /// <summary>
+    /// Deserializes JSON request and creates PromiseMapElement.
+    /// Forwards to SQL-Socket.
+    /// </summary>
     internal static class RequestHandler
     {
         
@@ -21,7 +25,7 @@ namespace Serverside
             PromiseMapElement elem = new PromiseMapElement(client, r);
             elem.ToggleState();
             int id = Promisemap.Add(elem);
-            SQL_Socket.execute(id);
+            SQL_Socket.execute(id); //forward to SQL-Socket
         }
     }
 }

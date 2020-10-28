@@ -1,5 +1,8 @@
 ﻿namespace SerializeLib
 {
+    /// <summary>
+    /// Data class for serialization between server and client.
+    /// </summary>
     public class Car
     {
         public readonly int id;

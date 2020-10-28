@@ -6,6 +6,9 @@ using System.Threading;
 
 namespace Serverside
 {
+    /// <summary>
+    /// Global, synchronized queue for server calls.
+    /// </summary>
     static class Promisemap
     {
         private static Mutex mapMutex = new Mutex();
