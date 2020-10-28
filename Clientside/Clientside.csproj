@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -68,10 +68,10 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-
+	
   <ItemGroup>
 	<ProjectReference Include="..\SerializeLib\SerializeLib.csproj" />
 	<ProjectReference Include="..\WebsocketLib\WebsocketLib.csproj" />
   </ItemGroup>
-
+	
 </Project>

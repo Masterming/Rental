@@ -1,7 +1,10 @@
-﻿using SerializeLib;
 using System;
+using System.Collections.Generic;
 using System.Net.Sockets;
+using System.Reflection.PortableExecutable;
+using System.Text;
 using System.Threading;
+using SerializeLib;
 
 namespace Serverside
 {
@@ -14,11 +17,11 @@ namespace Serverside
     }
     class PromiseMapElement
     {
-        private readonly Mutex elementMutex = new Mutex();
+        private Mutex elementMutex = new Mutex();
         private State state = State.uninitialized;
         public readonly TcpClient client;
-        public Request request;
-        public Response response;
+        public readonly Request request;
+        private Response response;
 
         public PromiseMapElement(TcpClient c, Request r)
         {
@@ -26,9 +29,9 @@ namespace Serverside
             request = r;
             state = State.initialized;
         }
-        public void Acquire()
+        public bool Acquire(int duration = -1)
         {
-            elementMutex.WaitOne(-1);
+            return elementMutex.WaitOne(duration);
         }
 
         public void Release()
@@ -42,6 +45,19 @@ namespace Serverside
                 state++;
             else
                 throw new Exception("stateOverflow in PromisMapElement");
+        }
+
+        public Response getResponse()
+        {
+            return response;
+        }
+
+        public void setResponse(Response _res)
+        {
+            if(response == null)
+            {
+                response = _res;
+            }
         }
 
         public State GetState()

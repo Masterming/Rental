@@ -1,19 +1,22 @@
-﻿using System.Collections.Generic;
+
+﻿using System;
+using System.Collections.Concurrent;
+using System.Text;
 using System.Threading;
 
 namespace Serverside
 {
     static class Promisemap
     {
-        private static readonly Mutex mapMutex = new Mutex();
-        private static readonly Dictionary<int, PromiseMapElement> map = new Dictionary<int, PromiseMapElement>();
+        private static Mutex mapMutex = new Mutex();
+        private static ConcurrentDictionary<int, PromiseMapElement> map = new ConcurrentDictionary<int, PromiseMapElement>();
         private static int nextID = 0;
 
         //returns id of added element
         public static int Add(PromiseMapElement elem)
         {
             mapMutex.WaitOne(-1);
-            map.Add(nextID, elem);
+            map.TryAdd(nextID, elem);
             mapMutex.ReleaseMutex();
             nextID += 1;
             return nextID - 1;
@@ -22,7 +25,15 @@ namespace Serverside
         public static bool Remove(int id)
         {
             mapMutex.WaitOne(-1);
-            bool ret = map.Remove(id);
+
+            bool ret = false;
+
+            if (map[id].Acquire(100))
+            {
+                PromiseMapElement tmp;
+                ret = map.TryRemove(id, out tmp);
+            }
+
             mapMutex.ReleaseMutex();
             return ret;
         }
