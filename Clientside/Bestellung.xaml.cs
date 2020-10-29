@@ -47,6 +47,10 @@ namespace Clientside
                 if (result == MessageBoxResult.Yes)
                     Application.Current.Shutdown();
             }
+            else if(res.errorCode == "INVALID")
+            {
+                MessageBox.Show("Auto nicht mehr verfügbar. Bitte versuchen sie es erneut.");
+            }
             else
             {
                 MessageBox.Show("Please try again", "Error");

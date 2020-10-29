@@ -121,7 +121,7 @@ namespace Clientside
                 MessageBox.Show("Bitte wähle ein Auto", "Fehlende Auswahl");
                 return;
             }
-            Bestellung bestellung = new Bestellung(cars[index], id);
+            Bestellung bestellung = new Bestellung(cars[index], cars[index].id);
             bestellung.Show();
             this.Hide();
         }
@@ -141,7 +141,6 @@ namespace Clientside
 
         private void DropdownChanged(object sender, EventArgs e)
         {
-            MessageBox.Show($"{Marke.Text}, {Kraftstoff.Text}, {Typ.Text}");
             for(int i = 0; i < cars.Count; i++)
             {
                 var color = Brushes.White;

@@ -34,6 +34,7 @@ namespace Serverside
             {
                 Request rq = elem.request;
                 List<Car> cars = new List<Car>();
+                bool valid = true;
 
                 string startDate = rq.start.Year.ToString() + rq.start.Month.ToString() + rq.start.Day.ToString();
                 string endDate = rq.end.Year.ToString() + rq.end.Month.ToString() + rq.end.Day.ToString();
@@ -62,10 +63,13 @@ namespace Serverside
                         SqliteCommand cmd = db.CreateCommand();
                         cmd.CommandText =
                             @"Select VermietungID FROM Vermietung ORDER BY VermietungID DESC LIMIT 1";
+                        Console.WriteLine("SQL command:");
+                        Console.WriteLine(cmd.CommandText);
                         SqliteDataReader r = cmd.ExecuteReader();
                         if (r.HasRows)
                         {
-                            vermietungID = (uint)r.GetInt32(0);
+                            r.Read();
+                            vermietungID = (uint)r.GetInt32(0) + 1;
                         }
                     }
                     catch(Exception e)
@@ -101,55 +105,97 @@ namespace Serverside
                 }
                 else
                 {
-                    command.CommandText =
-                        //@"
-                        //IF NOT EXISTS(
-                        //    SELECT 1
-                        //    FROM Vermietung
-                        //    WHERE (Anfang <= $endDate AND Anfang >= $startDate)
-                        //    OR (Ende >= $startDate AND Ende <= $endDate)
-                        //)
+                    try
+                    {
+                        SqliteCommand cmd = db.CreateCommand();
+                        cmd.CommandText =
+                        @"
+                        SELECT AutoID
+                        FROM Vermietung
+                        WHERE(AutoID = $id
+                        AND ((Anfang <= $endDate  AND Anfang >= $startDate)
+                        OR   (Ende   <= $endDate  AND Ende   >= $startDate))
+                        )
+                        ";
+                        cmd.Parameters.AddWithValue("$id", elem.request.carID);
+                        cmd.Parameters.AddWithValue("$startDate", startDate);
+                        cmd.Parameters.AddWithValue("$endDate", endDate);
+                        Console.WriteLine("SQL command:");
+                        Console.WriteLine(cmd.CommandText);
+                        Console.WriteLine($"id: {elem.request.carID}, start: {startDate}, end: {endDate}");
+                        SqliteDataReader r = cmd.ExecuteReader();
+                        if (r.HasRows)
+                        {
+                            r.Read();
+                            valid = false;
+                            Console.WriteLine($"Booking Validity Check returned: {r.GetInt32(0)}");
+                            r.Close();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Booking Validity Check returned:");
+                        Console.WriteLine(e.Message);
+                    }
+
+                    if (valid)
+                    {
+                        command.CommandText =
                         @"INSERT INTO Vermietung (VermietungID, Anfang, Ende, AutoID)
                         VALUES($vermietungID, $startDate, $endDate, $id)                        
                         ";
-                    command.Parameters.AddWithValue("$vermietungID", vermietungID++);
-                    command.Parameters.AddWithValue("$startDate", startDate);
-                    command.Parameters.AddWithValue("$endDate", endDate);
-                    command.Parameters.AddWithValue("$id", id);
+                        command.Parameters.AddWithValue("$vermietungID", vermietungID++);
+                        command.Parameters.AddWithValue("$startDate", startDate);
+                        command.Parameters.AddWithValue("$endDate", endDate);
+                        command.Parameters.AddWithValue("$id", elem.request.carID);
+                        Console.WriteLine("SQL command:");
+                        Console.WriteLine(command.CommandText);
+                    }
                 }
 
-                SqliteDataReader reader = command.ExecuteReader();
-
-                IEnumerator readerEnumerator = reader.GetEnumerator();
-
-                while (readerEnumerator.MoveNext())
+                if (valid)
                 {
-                    //AutoID int NOT NULL PRIMARY KEY, Modell char(50), Marke char(50),
-                    //Kraftstoffart char(50), Leistung int, Typ char(50), Sitzplaetze int, Tueren int, Tagespreis int
-                    int _AutoID = reader.GetInt32(0);
-                    string _model = reader.GetString(1);
-                    string _brand = reader.GetString(2);
-                    string _fueltype = reader.GetString(3);
-                    int _power = reader.GetInt32(4);
-                    string _type = reader.GetString(5);
-                    int _seats = reader.GetInt32(6);
-                    int _doors = reader.GetInt32(7);
-                    int _pricePerDay = reader.GetInt32(8);
+                    SqliteDataReader reader = command.ExecuteReader();
 
-                    Console.WriteLine($"\tCar: {_AutoID}, {_model}, {_brand}, {_fueltype}, {_power}, {_type}, {_seats}, {_doors}, {_pricePerDay}");
+                    IEnumerator readerEnumerator = reader.GetEnumerator();
 
-                    cars.Add(new Car(_AutoID, _model, _brand, _fueltype, _power, _type, _seats, _doors, _pricePerDay));
+                    while (readerEnumerator.MoveNext())
+                    {
+                        //AutoID int NOT NULL PRIMARY KEY, Modell char(50), Marke char(50),
+                        //Kraftstoffart char(50), Leistung int, Typ char(50), Sitzplaetze int, Tueren int, Tagespreis int
+                        int _AutoID = reader.GetInt32(0);
+                        string _model = reader.GetString(1);
+                        string _brand = reader.GetString(2);
+                        string _fueltype = reader.GetString(3);
+                        int _power = reader.GetInt32(4);
+                        string _type = reader.GetString(5);
+                        int _seats = reader.GetInt32(6);
+                        int _doors = reader.GetInt32(7);
+                        int _pricePerDay = reader.GetInt32(8);
+
+                        Console.WriteLine($"\tCar: {_AutoID}, {_model}, {_brand}, {_fueltype}, {_power}, {_type}, {_seats}, {_doors}, {_pricePerDay}");
+
+                        cars.Add(new Car(_AutoID, _model, _brand, _fueltype, _power, _type, _seats, _doors, _pricePerDay));
+                    }
                 }
 
                 dbMutex.ReleaseMutex();
 
                 db.Close();
 
-                elem.setResponse(new Response("OK", cars));
+                if (valid)
+                {
+                    elem.setResponse(new Response("OK", cars));
+                }
+                else
+                {
+                    elem.setResponse(new Response("INVALID"));
+                }
                 elem.ToggleState();
             }
             catch(Exception e)
             {
+                Console.WriteLine($"Exception occured: {e.Message}");
                 elem.setResponse(new Response(e.Message));
             }
 
@@ -161,7 +207,7 @@ namespace Serverside
 
         public static void InitializeDatabase(string source)
         {
-            System.Diagnostics.Trace.WriteLine("Creating Database"); //?
+            System.Diagnostics.Trace.WriteLine("Creating Database");
             SqliteCommand command = db.CreateCommand();
             string strCommand = File.ReadAllText(source);
             command.CommandText = strCommand;
