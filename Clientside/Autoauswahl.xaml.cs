@@ -16,10 +16,12 @@ namespace Clientside
     {
         private List<Car> cars;
         private int id = -1;
+        private int index;
 
         public Autoauswahl()
         {
             InitializeComponent();
+            UseLayoutRounding = true;
 
             DateTime start = (DateTime)Application.Current.Properties["start"];
             DateTime end = (DateTime)Application.Current.Properties["end"];
@@ -65,8 +67,8 @@ namespace Clientside
         {
             Image img = new Image
             {
-                Source = new BitmapImage(new Uri($"Pictures/{id}.jpg", UriKind.Relative)),
-                Width = 94
+                Source = new BitmapImage(new Uri($"Pictures/{car.id}.jpg", UriKind.Relative)),
+                Height = 70
             };
             TextBlock tb = new TextBlock
             {
@@ -79,7 +81,7 @@ namespace Clientside
 
             Button b = new Button
             {
-                Name = $"B{id}",
+                Name = $"B{car.id}",
                 Content = sp,
                 Background = Brushes.Orange,
                 BorderBrush = Brushes.White,
@@ -97,24 +99,29 @@ namespace Clientside
             Button b = (Button)sender;
             string name = b.Name.Remove(0, 1);
             int.TryParse(name, out id);
+            for(index = 0; index < cars.Count; index++)
+            {
+                if(cars[index].id == id)
+                    break;
+            }
 
-            DetailsMarke.Text = cars[id].brand;
-            DetailsModell.Text = cars[id].model;
-            DetailsLeistung.Text = cars[id].power.ToString();
-            DetailsSitzplaetze.Text = cars[id].seats.ToString();
-            DetailsKraftstoff.Text = cars[id].fueltype;
-            DetailsAntriebsart.Text = cars[id].type;
-            Preis.Text = cars[id].pricePerDay.ToString();
+            DetailsMarke.Text = cars[index].brand;
+            DetailsModell.Text = cars[index].model;
+            DetailsLeistung.Text = cars[index].power.ToString();
+            DetailsSitzplaetze.Text = cars[index].seats.ToString();
+            DetailsKraftstoff.Text = cars[index].fueltype;
+            DetailsAntriebsart.Text = cars[index].type;
+            Preis.Text = cars[index].pricePerDay.ToString();
         }
 
         private void Weiter_Click(object sender, RoutedEventArgs e)
         {
             if(id == -1)
             {
-                MessageBox.Show("Please select a car", "Fehlendes Auto");
+                MessageBox.Show("Bitte wähle ein Auto", "Fehlende Auswahl");
                 return;
             }
-            Bestellung bestellung = new Bestellung(cars[id], id);
+            Bestellung bestellung = new Bestellung(cars[index], id);
             bestellung.Show();
             this.Hide();
         }
@@ -130,6 +137,27 @@ namespace Clientside
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void DropdownChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show($"{Marke.Text}, {Kraftstoff.Text}, {Typ.Text}");
+            for(int i = 0; i < cars.Count; i++)
+            {
+                var color = Brushes.White;
+                if (Marke.Text == cars[i].brand || Marke.Text == "Marke")
+                {
+                    if (Typ.Text == cars[i].type || Typ.Text == "Fahrzeugtyp")
+                    {
+                        if (Kraftstoff.Text == cars[i].fueltype || Kraftstoff.Text == "Kraftstoff")
+                        {
+                            color = Brushes.Black;
+                        }
+                    }
+                }
+                Button b = (Button)Autos.Children[i];
+                b.BorderBrush = color;
+            }
         }
     }
 }

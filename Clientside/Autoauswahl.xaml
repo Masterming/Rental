@@ -6,10 +6,17 @@
         mc:Ignorable="d"
         Closing="Window_Closing"
         Title="Autoauswahl" Height="550" Width="800" Background="DarkOrange">
+    <Window.Resources>
+        <Style TargetType="{x:Type Image}">
+        <Setter
+            Property="RenderOptions.BitmapScalingMode"
+            Value="HighQuality" />
+        </Style>
+    </Window.Resources>
     <Grid>
-        <ComboBox Background="Black" Foreground="DarkOrange" BorderBrush="Black" BorderThickness="2" IsReadOnly="True" Focusable="False" IsEditable="True" Text="Marke" x:Name ="Marke" HorizontalAlignment="Left" Margin="73,46,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox Background="Black" Foreground="DarkOrange" BorderBrush="Black" BorderThickness="2" IsReadOnly="True" Focusable="False" IsEditable="True" Text="Typ"  x:Name ="Typ" HorizontalAlignment="Left" Margin="236,46,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox Background="Black" Foreground="DarkOrange" BorderBrush="Black" BorderThickness="2" IsReadOnly="True" Focusable="False" IsEditable="True" Text="Kraftstoff"  x:Name ="Kraftstoff" HorizontalAlignment="Left" Margin="405,46,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox DropDownClosed="DropdownChanged" Background="Black" Foreground="DarkOrange" BorderBrush="Black" BorderThickness="2" IsReadOnly="True" Focusable="False" IsEditable="True" Text="Marke" x:Name ="Marke" HorizontalAlignment="Left" Margin="73,46,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox DropDownClosed="DropdownChanged" Background="Black" Foreground="DarkOrange" BorderBrush="Black" BorderThickness="2" IsReadOnly="True" Focusable="False" IsEditable="True" Text="Fahrzeugtyp"  x:Name ="Typ" HorizontalAlignment="Left" Margin="236,46,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox DropDownClosed="DropdownChanged" Background="Black" Foreground="DarkOrange" BorderBrush="Black" BorderThickness="2" IsReadOnly="True" Focusable="False" IsEditable="True" Text="Kraftstoff"  x:Name ="Kraftstoff" HorizontalAlignment="Left" Margin="405,46,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock Margin="0,10,0.333,0" TextWrapping="Wrap" Text="Autoauswahl" VerticalAlignment="Top" Height="31" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline" FontSize="20" TextAlignment="Center"/>
 
         <Grid Margin="20" x:Name="Autos">
@@ -41,9 +48,9 @@
             <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" Background="#eee" Margin=" 0 0 0 10" x:Name="DetailsSitzplaetze"/>
             <TextBlock TextWrapping="Wrap" FontWeight="Black" Text="Kraftstoff:"/>
             <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" Background="#eee" Margin=" 0 0 0 10" x:Name="DetailsKraftstoff"/>
-            <TextBlock TextWrapping="Wrap" FontWeight="Black" Text="Antriebsart:"/>
+            <TextBlock TextWrapping="Wrap" FontWeight="Black" Text="Fahrzeugtyp:"/>
             <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" Background="#eee" Margin=" 0 0 0 10" x:Name="DetailsAntriebsart"/>
-            <TextBlock TextWrapping="Wrap" FontWeight="Black" Text="Preis:"/>
+            <TextBlock TextWrapping="Wrap" FontWeight="Black" Text="Täglicher Preis:"/>
             <TextBox IsReadOnly="True" Height="23" TextWrapping="Wrap" Text="" Background="#eee" Margin=" 0 0 0 10" x:Name="Preis"/>
         </StackPanel>
         <Button x:Name ="Weiter" Foreground="black" Background="Orange" BorderBrush="White" BorderThickness="3" Click ="Weiter_Click" Content="Weiter" HorizontalAlignment="Left" Margin="641,410,0,0" VerticalAlignment="Top" Width="81" Height="25" FontWeight="Bold"/>

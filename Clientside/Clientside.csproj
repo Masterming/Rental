@@ -9,8 +9,6 @@
   <ItemGroup>
     <None Remove="Pictures\0.jpg" />
     <None Remove="Pictures\1.jpg" />
-    <None Remove="Pictures\10.png" />
-    <None Remove="Pictures\11.png" />
     <None Remove="Pictures\2.jpg" />
     <None Remove="Pictures\3.jpg" />
     <None Remove="Pictures\4.jpg" />
@@ -19,6 +17,8 @@
     <None Remove="Pictures\7.jpg" />
     <None Remove="Pictures\8.jpg" />
     <None Remove="Pictures\9.jpg" />
+    <None Remove="Pictures\10.jpg" />
+    <None Remove="Pictures\11.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,10 +52,10 @@
     <Resource Include="Pictures\9.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Pictures\10.png">
+    <Resource Include="Pictures\10.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Pictures\11.png">
+    <Resource Include="Pictures\11.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
