@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Net.Sockets;
+using System.Windows.Media.TextFormatting;
 using WebsocketLib;
 
 namespace Clientside
 {
     class Client
     {
-
         public Client(string ip, int port)
         {
             Ip = ip;
@@ -31,7 +31,10 @@ namespace Clientside
                 byte[] bytes = Lib.Read(client);
 
                 // transform the response into readable text
-                return Lib.DecodeBytes(bytes);
+                var tmp = Lib.DecodeBytes(bytes);
+                System.Diagnostics.Trace.WriteLine($"sent JSON: {msg}\n");
+                System.Diagnostics.Trace.WriteLine($"received JSON: {tmp}\n");
+                return tmp;
             }
             catch (SocketException)
             {

@@ -9,14 +9,16 @@ namespace Clientside
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static Client client;
         public MainWindow()
         {
             InitializeComponent();
             SelectedDateChanged(null, null);
-            Client client = new Client("127.0.0.1", 80);
-            Application.Current.Properties["client"] = client;
+            if(client == null) {
+                client = new Client("127.0.0.1", 80);
+                Application.Current.Properties["client"] = client;
+            }
         }
-
         private void Weiter_Click(object sender, RoutedEventArgs e)
         {
             Autoauswahl a = new Autoauswahl();
@@ -37,6 +39,11 @@ namespace Clientside
             Application.Current.Properties["start"] = start;
             Application.Current.Properties["end"] = end;
             Vermietungszeitraum.Text = $"{start.ToShortDateString()} - {end.ToShortDateString()}";
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

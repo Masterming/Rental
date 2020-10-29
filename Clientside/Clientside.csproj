@@ -7,59 +7,55 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Pictures\Audi A3 Limousine.jpg" />
-    <None Remove="Pictures\Audi RS3.jpg" />
-    <None Remove="Pictures\BMW M4 Competition.jpg" />
-    <None Remove="Pictures\BMW M8 Gran Coupé.jpg" />
-    <None Remove="Pictures\BMW X6.jpg" />
-    <None Remove="Pictures\Ferrari LaFerrari.jpg" />
-    <None Remove="Pictures\Golf GTI TCR.jpg" />
-    <None Remove="Pictures\Jeep-Cherokeejpg.jpg" />
-    <None Remove="Pictures\Mercedes Benz G-Class.jpg" />
-    <None Remove="Pictures\Porsche Spyder 918.jpg" />
-    <None Remove="Pictures\VW Passat B8.png" />
-    <None Remove="Pictures\VW Up!.png" />
+    <None Remove="Pictures\0.jpg" />
+    <None Remove="Pictures\1.jpg" />
+    <None Remove="Pictures\10.png" />
+    <None Remove="Pictures\11.png" />
+    <None Remove="Pictures\2.jpg" />
+    <None Remove="Pictures\3.jpg" />
+    <None Remove="Pictures\4.jpg" />
+    <None Remove="Pictures\5.jpg" />
+    <None Remove="Pictures\6.jpg" />
+    <None Remove="Pictures\7.jpg" />
+    <None Remove="Pictures\8.jpg" />
+    <None Remove="Pictures\9.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WebsocketLib\WebsocketLib.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Pictures\Audi A3 Limousine.jpg">
+    <Resource Include="Pictures\0.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Pictures\Audi RS3.jpg">
+    <Resource Include="Pictures\1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Pictures\BMW M4 Competition.jpg">
+    <Resource Include="Pictures\2.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Pictures\BMW M8 Gran Coupé.jpg">
+    <Resource Include="Pictures\3.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Pictures\BMW X6.jpg">
+    <Resource Include="Pictures\4.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Pictures\Ferrari LaFerrari.jpg">
+    <Resource Include="Pictures\5.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Pictures\Golf GTI TCR.jpg">
+    <Resource Include="Pictures\6.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Pictures\Jeep-Cherokeejpg.jpg">
+    <Resource Include="Pictures\7.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Pictures\Mercedes Benz G-Class.jpg">
+    <Resource Include="Pictures\8.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Pictures\Porsche Spyder 918.jpg">
+    <Resource Include="Pictures\9.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Pictures\VW Passat B8.png">
+    <Resource Include="Pictures\10.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Pictures\VW Up!.png">
+    <Resource Include="Pictures\11.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
@@ -72,5 +68,10 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-
+	
+  <ItemGroup>
+	<ProjectReference Include="..\SerializeLib\SerializeLib.csproj" />
+	<ProjectReference Include="..\WebsocketLib\WebsocketLib.csproj" />
+  </ItemGroup>
+	
 </Project>

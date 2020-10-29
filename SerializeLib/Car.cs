@@ -1,20 +1,23 @@
-﻿namespace SerializeLib
+﻿using System.Runtime.Serialization;
+
+namespace SerializeLib
 {
     /// <summary>
     /// Data class for serialization between server and client.
     /// </summary>
     public class Car
     {
-        public readonly int id;
-        public readonly string model;
-        public readonly string brand;
-        public readonly string fueltype;
-        public readonly int power;
-        public readonly string type;
-        public readonly int seats;
-        public readonly int doors;
-        public readonly int pricePerDay;
+        public int id { get; set; }
+        public string model { get; set; }
+        public string brand { get; set; }
+        public string fueltype { get; set; }
+        public int power { get; set; }
+        public string type { get; set; }
+        public int seats { get; set; }
+        public int doors { get; set; }
+        public int pricePerDay { get; set; }
 
+        public Car() { }
         public Car(int _id, string _model, string _brand, string _fueltype, int _power, string _type, int _seats, int _doors, int _pricePerDay)
         {
             id = _id;

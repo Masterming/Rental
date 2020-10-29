@@ -5,6 +5,7 @@ using System.Text.Json.Serialization;
 using WebsocketLib;
 using SerializeLib;
 using System.Threading;
+using System.Text;
 
 namespace Serverside
 {

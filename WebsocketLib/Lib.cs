@@ -120,7 +120,7 @@ namespace WebsocketLib
 
             byte[] bytes = new byte[b.Length + offset];
             bytes[0] = cmd;
-            bytes[1] = masked ? (byte)(b.Length + 128) : (byte)(b.Length);
+            bytes[1] = masked ? (byte)(msglen + 128) : (byte)(msglen);
 
             if (msglen == 126)
             {
