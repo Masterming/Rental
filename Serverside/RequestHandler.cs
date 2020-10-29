@@ -7,6 +7,10 @@ using System;
 
 namespace Serverside
 {
+    /// <summary>
+    /// Deserializes JSON request and creates PromiseMapElement.
+    /// Forwards to SQL-Socket.
+    /// </summary>
     internal static class RequestHandler
     {
         
