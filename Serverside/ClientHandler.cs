@@ -6,6 +6,9 @@ using WebsocketLib;
 
 namespace Serverside
 {
+    /// <summary>
+    /// Handles communication protocol. Forwards requests to RequestHandler.
+    /// </summary>
     static class ClientHandler
     {
         public static void Handle(TcpClient client)
@@ -26,7 +29,7 @@ namespace Serverside
 
             s = Lib.DecodeBytes(bytes);
             Console.WriteLine($"({ip}) Recieved: {s}");
-            RequestHandler.Handle(client, s);
+            RequestHandler.Handle(client, s); //forward to RequestHandler
         }
         private static byte[] CreateHandshake(string s)
         {

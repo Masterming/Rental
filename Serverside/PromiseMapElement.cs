@@ -15,6 +15,10 @@ namespace Serverside
         handled = 2,
         ready = 3
     }
+
+    /// <summary>
+    /// Wrapper class, holding all data relevant for a specific server call.
+    /// </summary>
     class PromiseMapElement
     {
         private Mutex elementMutex = new Mutex();

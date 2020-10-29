@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Serverside
 {
+    /// <summary>
+    /// Server class waiting on client requests.
+    /// Forwards to ClientHandler.
+    /// </summary>
     class Server
     {
         private bool exit;
@@ -41,6 +46,8 @@ namespace Serverside
         public void Stop()
         {
             exit = true;
+            //wait 10s so all threads in the system can exit safely.
+            Thread.Sleep(10000);
         }
 
         async Task AcceptClientsAsync()
