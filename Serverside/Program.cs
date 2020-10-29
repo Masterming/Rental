@@ -1,7 +1,5 @@
 using System;
-using System.Globalization;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Serverside
 {
@@ -27,6 +25,7 @@ namespace Serverside
 
             Console.WriteLine("Press any key to close ...\n");
             Console.ReadKey();
+            Console.WriteLine("\nShutting down server. Please wait ...\n");
             server.Stop();
         }
     }

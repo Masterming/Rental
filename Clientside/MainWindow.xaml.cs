@@ -5,7 +5,8 @@ using System.Windows.Controls;
 namespace Clientside
 {
     /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
+    /// Logic for für MainWindow.xaml
+    /// Manages Picked Dates for Rental
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -14,7 +15,8 @@ namespace Clientside
         {
             InitializeComponent();
             SelectedDateChanged(null, null);
-            if(client == null) {
+            if (client == null)
+            {
                 client = new Client("127.0.0.1", 80);
                 Application.Current.Properties["client"] = client;
             }

@@ -1,12 +1,13 @@
-﻿using System;
-using System.Windows;
-using SerializeLib;
+﻿using SerializeLib;
+using System;
 using System.Text.Json;
+using System.Windows;
 
 namespace Clientside
 {
     /// <summary>
-    /// Interaction logic for Bestellung.xaml
+    /// Logic for für Bestellung.xaml
+    /// Finalizes Rental
     /// </summary>
     public partial class Bestellung : Window
     {
@@ -46,6 +47,10 @@ namespace Clientside
                 MessageBoxResult result = MessageBox.Show("Auto erfolgreich gemietet. Beenden?", "Success", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                     Application.Current.Shutdown();
+            }
+            else if (res.errorCode == "INVALID")
+            {
+                MessageBox.Show("Auto nicht mehr verfügbar. Bitte versuchen sie es erneut.");
             }
             else
             {

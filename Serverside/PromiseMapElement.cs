@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Net.Sockets;
-using System.Reflection.PortableExecutable;
-using System.Text;
-using System.Threading;
 using SerializeLib;
+using System;
+using System.Net.Sockets;
+using System.Threading;
 
 namespace Serverside
 {
@@ -51,14 +48,14 @@ namespace Serverside
                 throw new Exception("stateOverflow in PromisMapElement");
         }
 
-        public Response getResponse()
+        public Response GetResponse()
         {
             return response;
         }
 
-        public void setResponse(Response _res)
+        public void SetResponse(Response _res)
         {
-            if(response == null)
+            if (response == null)
             {
                 response = _res;
             }

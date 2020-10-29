@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace SerializeLib
+﻿namespace SerializeLib
 {
     /// <summary>
     /// Data class for serialization between server and client.

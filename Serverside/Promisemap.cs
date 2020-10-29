@@ -1,7 +1,4 @@
-
-﻿using System;
 using System.Collections.Concurrent;
-using System.Text;
 using System.Threading;
 
 namespace Serverside
@@ -33,8 +30,7 @@ namespace Serverside
 
             if (map[id].Acquire(100))
             {
-                PromiseMapElement tmp;
-                ret = map.TryRemove(id, out tmp);
+                ret = map.TryRemove(id, out _);
             }
 
             mapMutex.ReleaseMutex();

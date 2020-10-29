@@ -13,7 +13,7 @@ namespace Serverside
     class Server
     {
         private bool exit;
-        private readonly TcpListener server;
+        private TcpListener server;
 
         public Server(string ip, int port)
         {
@@ -38,7 +38,7 @@ namespace Serverside
             }
             catch (Exception e)
             {
-                Console.WriteLine("Exception: {0}", e.Message);
+                Console.WriteLine($"Exception: {e.Message}");
                 server.Stop();
             }
         }

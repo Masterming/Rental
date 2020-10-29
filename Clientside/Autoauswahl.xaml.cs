@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Imaging;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Clientside
 {
     /// <summary>
-    /// Interaction logic for Autoauswahl.xaml
+    /// Logic for für Autoauswahl.xaml
+    /// Manages Picked Car for Rental
     /// </summary>
     public partial class Autoauswahl : Window
     {
@@ -59,7 +60,7 @@ namespace Clientside
             }
             catch (JsonException)
             {
-                Console.WriteLine("ERROR: The Request is not a valid JSON");
+                System.Diagnostics.Trace.WriteLine("ERROR: The Request is not a valid JSON");
             }
         }
 
@@ -99,9 +100,9 @@ namespace Clientside
             Button b = (Button)sender;
             string name = b.Name.Remove(0, 1);
             int.TryParse(name, out id);
-            for(index = 0; index < cars.Count; index++)
+            for (index = 0; index < cars.Count; index++)
             {
-                if(cars[index].id == id)
+                if (cars[index].id == id)
                     break;
             }
 
@@ -116,12 +117,12 @@ namespace Clientside
 
         private void Weiter_Click(object sender, RoutedEventArgs e)
         {
-            if(id == -1)
+            if (id == -1)
             {
                 MessageBox.Show("Bitte wähle ein Auto", "Fehlende Auswahl");
                 return;
             }
-            Bestellung bestellung = new Bestellung(cars[index], id);
+            Bestellung bestellung = new Bestellung(cars[index], cars[index].id);
             bestellung.Show();
             this.Hide();
         }
@@ -141,8 +142,7 @@ namespace Clientside
 
         private void DropdownChanged(object sender, EventArgs e)
         {
-            MessageBox.Show($"{Marke.Text}, {Kraftstoff.Text}, {Typ.Text}");
-            for(int i = 0; i < cars.Count; i++)
+            for (int i = 0; i < cars.Count; i++)
             {
                 var color = Brushes.White;
                 if (Marke.Text == cars[i].brand || Marke.Text == "Marke")

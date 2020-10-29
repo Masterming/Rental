@@ -9,6 +9,8 @@ namespace WebsocketLib
 {
     /// <summary>
     /// TCP Util Lib
+    /// read and write bytes over Networkstream
+    /// Follows Internet standards track protocol rfc6455 #section-5.2
     /// </summary>
     public static class Lib
     {

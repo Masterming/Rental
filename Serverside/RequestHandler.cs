@@ -1,9 +1,8 @@
-using System.Net.Sockets;
 using SerializeLib;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Threading;
 using System;
+using System.Net.Sockets;
+using System.Text.Json;
+using System.Threading;
 
 namespace Serverside
 {
@@ -13,21 +12,22 @@ namespace Serverside
     /// </summary>
     internal static class RequestHandler
     {
-        
+
         public static void Handle(TcpClient client, string json)
         {
-            Thread workerThread = new Thread(() => run(client, json));
+            Thread workerThread = new Thread(() => Run(client, json));
             workerThread.Start();
         }
 
-        static internal void run(TcpClient client, string json)
+        static internal void Run(TcpClient client, string json)
         {
-            try { 
+            try
+            {
                 Request r = JsonSerializer.Deserialize<Request>(json);
                 PromiseMapElement elem = new PromiseMapElement(client, r);
                 elem.ToggleState();
                 int id = Promisemap.Add(elem);
-                SQL_Socket.execute(id);
+                SQL_Socket.Execute(id);
             }
             catch (JsonException)
             {

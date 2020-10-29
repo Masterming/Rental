@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Net.Sockets;
-using System.Windows.Media.TextFormatting;
 using WebsocketLib;
 
 namespace Clientside
 {
+    /// <summary>
+    /// The client uses TcpClient and WebsocketLib
+    /// Connect to server and Sending wrapper
+    /// </summary>
     class Client
     {
         public Client(string ip, int port)
