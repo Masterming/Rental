@@ -119,7 +119,7 @@ namespace Serverside
                         {
                             r.Read();
                             valid = false;
-                            Console.WriteLine($"Booking Validity Check returned: {r.GetInt32(0)}");
+                            // Console.WriteLine($"Booking Validity Check returned: {r.GetInt32(0)}");
                             r.Close();
                         }
                     }
@@ -187,8 +187,8 @@ namespace Serverside
             }
 
             Promisemap.ReleaseElement(elem);
-
-            DeliveryHandler.Handle(id); //Forward to DeliveryHandler
+            //Forward to DeliveryHandler
+            DeliveryHandler.Handle(id);
         }
 
 
