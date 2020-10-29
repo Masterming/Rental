@@ -35,9 +35,9 @@ namespace Serverside
                 List<Car> cars = new List<Car>();
                 bool valid = true;
 
+                //yyyymmdd
                 string startDate = rq.start.Year.ToString() + rq.start.Month.ToString() + rq.start.Day.ToString();
                 string endDate = rq.end.Year.ToString() + rq.end.Month.ToString() + rq.end.Day.ToString();
-                //yyyymmdd
 
                 dbMutex.WaitOne(-1);
 
@@ -114,12 +114,15 @@ namespace Serverside
                         cmd.Parameters.AddWithValue("$id", elem.request.carID);
                         cmd.Parameters.AddWithValue("$startDate", startDate);
                         cmd.Parameters.AddWithValue("$endDate", endDate);
+                        Console.WriteLine("SQL command:");
+                        Console.WriteLine(cmd.CommandText);
+                        Console.WriteLine($"id: {elem.request.carID}, start: {startDate}, end: {endDate}");
                         SqliteDataReader r = cmd.ExecuteReader();
                         if (r.HasRows)
                         {
                             r.Read();
                             valid = false;
-                            // Console.WriteLine($"Booking Validity Check returned: {r.GetInt32(0)}");
+                            Console.WriteLine($"Booking Validity Check returned: {r.GetInt32(0)}");
                             r.Close();
                         }
                     }
@@ -135,11 +138,10 @@ namespace Serverside
                         @"INSERT INTO Vermietung (VermietungID, Anfang, Ende, AutoID)
                         VALUES($vermietungID, $startDate, $endDate, $id)                        
                         ";
-                        command.Parameters.AddWithValue("$vermietungID", vermietungID++);
-                        command.Parameters.AddWithValue("$startDate", startDate);
-                        command.Parameters.AddWithValue("$endDate", endDate);
-                        command.Parameters.AddWithValue("$id", elem.request.carID);
-                    }
+                    command.Parameters.AddWithValue("$vermietungID", vermietungID++);
+                    command.Parameters.AddWithValue("$startDate", startDate);
+                    command.Parameters.AddWithValue("$endDate", endDate);
+                    command.Parameters.AddWithValue("$id", id);
                 }
 
                 if (valid)
@@ -162,28 +164,27 @@ namespace Serverside
                         int _doors = reader.GetInt32(7);
                         int _pricePerDay = reader.GetInt32(8);
 
-                        cars.Add(new Car(_AutoID, _model, _brand, _fueltype, _power, _type, _seats, _doors, _pricePerDay));
-                    }
+                    cars.Add(new Car(_AutoID, _model, _brand, _fueltype, _power, _type, _seats, _doors, _pricePerDay));
                 }
 
                 dbMutex.ReleaseMutex();
 
-                db.Close();
+                    db.Close();
 
-                if (valid)
-                {
-                    elem.SetResponse(new Response("OK", cars));
+                    if (valid)
+                    {
+                        elem.SetResponse(new Response("OK", cars));
+                    }
+                    else
+                    {
+                        elem.SetResponse(new Response("INVALID"));
+                    }
+                    elem.ToggleState();
                 }
-                else
-                {
-                    elem.SetResponse(new Response("INVALID"));
-                }
-                elem.ToggleState();
-            }
             catch (Exception e)
             {
                 Console.WriteLine($"Exception occured: {e.Message}");
-                elem.SetResponse(new Response(e.Message));
+                elem.setResponse(new Response(e.Message));
             }
 
             Promisemap.ReleaseElement(elem);
